@@ -1,0 +1,11 @@
+carrier: ''
+first_name: Bibli
+gmail_password: ''
+location: '80302'
+phone_number: ''
+prefers_email: true
+stt_engine: google
+keys:
+    GOOGLE_SPEECH: AIzaSyDz9TR5tAR393Jo7Jd9kgjxySo88qF7Kdg
+
+tts_engine: google-tts

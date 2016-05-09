@@ -1,0 +1,168 @@
+#############################################################################
+## Copyright (c) 1996, Carnegie Mellon University, Cambridge University,
+## Ronald Rosenfeld and Philip Clarkson
+## Version 3, Copyright (c) 2006, Carnegie Mellon University 
+## Contributors includes Wen Xu, Ananlada Chotimongkol, 
+## David Huggins-Daines, Arthur Chan and Alan Black 
+#############################################################################
+=============================================================================
+===============  This file was produced by the CMU-Cambridge  ===============
+===============     Statistical Language Modeling Toolkit     ===============
+=============================================================================
+This is a 3-gram language model, based on a vocabulary of 20 words,
+  which begins "</s>", "<s>", "BE"...
+This is an OPEN-vocabulary model (type 1)
+  (OOVs were mapped to UNK, which is treated as any other vocabulary word)
+Good-Turing discounting was applied.
+1-gram frequency of frequency : 17 
+2-gram frequency of frequency : 34 0 0 0 0 0 0 
+3-gram frequency of frequency : 51 0 0 0 0 0 0 
+1-gram discounting ratios : 0.89 
+2-gram discounting ratios : 
+3-gram discounting ratios : 
+This file is in the ARPA-standard format introduced by Doug Paul.
+
+p(wd3|wd1,wd2)= if(trigram exists)           p_3(wd1,wd2,wd3)
+                else if(bigram w1,w2 exists) bo_wt_2(w1,w2)*p(wd3|wd2)
+                else                         p(wd3|w2)
+
+p(wd2|wd1)= if(bigram exists) p_2(wd1,wd2)
+            else              bo_wt_1(wd1)*p_1(wd2)
+
+All probs and back-off weights (bo_wt) are given in log10 form.
+
+Data formats:
+
+Beginning of data mark: \data\
+ngram 1=nr            # number of 1-grams
+ngram 2=nr            # number of 2-grams
+ngram 3=nr            # number of 3-grams
+
+\1-grams:
+p_1     wd_1 bo_wt_1
+\2-grams:
+p_2     wd_1 wd_2 bo_wt_2
+\3-grams:
+p_3     wd_1 wd_2 wd_3 
+
+end of data mark: \end\
+
+\data\
+ngram 1=21
+ngram 2=35
+ngram 3=51
+
+\1-grams:
+-1.7559 <UNK>	0.0000
+-0.4771 </s>	-1.1027
+-0.4771 <s>	-1.3903
+-1.7559 BE	-0.3010
+-1.7559 BEING	-0.3010
+-1.7559 BUT	-0.3010
+-1.7559 DID	-0.3010
+-1.7559 FIRST	-0.3010
+-1.7559 IN	-0.3010
+-1.7559 IS	-0.3010
+-1.7559 IT	-0.3010
+-1.7559 LUCKY	-0.3010
+-1.7559 NOW	-0.3010
+-1.7559 OF	-0.3010
+-1.7559 ON	-0.3010
+-1.7559 RIGHT	-0.3010
+-1.7559 SAY	-0.3010
+-1.7559 WHAT	-0.3010
+-1.7559 WHICH	-0.3010
+-1.7559 WITH	-0.3010
+-1.7559 WORK	0.0000
+
+\2-grams:
+-0.0235 </s> <s> -0.1847
+-1.2430 <s> BE 0.1761
+-1.2430 <s> BEING 0.1761
+-1.2430 <s> BUT 0.1761
+-1.2430 <s> DID 0.1761
+-1.2430 <s> FIRST 0.1761
+-1.2430 <s> IN 0.1761
+-1.2430 <s> IS 0.1761
+-1.2430 <s> IT 0.1761
+-1.2430 <s> LUCKY 0.1761
+-1.2430 <s> NOW 0.1761
+-1.2430 <s> OF 0.1761
+-1.2430 <s> ON 0.1761
+-1.2430 <s> RIGHT 0.1761
+-1.2430 <s> SAY 0.1761
+-1.2430 <s> WHAT 0.1761
+-1.2430 <s> WHICH 0.1761
+-1.2430 <s> WITH 0.1761
+-0.1761 BE </s> 0.9777
+-0.1761 BEING </s> 0.9777
+-0.1761 BUT </s> 0.9777
+-0.1761 DID </s> 0.9777
+-0.1761 FIRST </s> 0.9777
+-0.1761 IN </s> 0.9777
+-0.1761 IS </s> 0.9777
+-0.1761 IT </s> 0.9777
+-0.1761 LUCKY </s> 0.9777
+-0.1761 NOW </s> 0.9777
+-0.1761 OF </s> 0.9777
+-0.1761 ON </s> 0.9777
+-0.1761 RIGHT </s> 0.9777
+-0.1761 SAY </s> 0.9777
+-0.1761 WHAT </s> 0.9777
+-0.1761 WHICH </s> 0.9777
+-0.1761 WITH </s> 0.9777
+
+\3-grams:
+-1.2553 </s> <s> BEING 
+-1.2553 </s> <s> BUT 
+-1.2553 </s> <s> DID 
+-1.2553 </s> <s> FIRST 
+-1.2553 </s> <s> IN 
+-1.2553 </s> <s> IS 
+-1.2553 </s> <s> IT 
+-1.2553 </s> <s> LUCKY 
+-1.2553 </s> <s> NOW 
+-1.2553 </s> <s> OF 
+-1.2553 </s> <s> ON 
+-1.2553 </s> <s> RIGHT 
+-1.2553 </s> <s> SAY 
+-1.2553 </s> <s> WHAT 
+-1.2553 </s> <s> WHICH 
+-1.2553 </s> <s> WITH 
+-1.2553 </s> <s> WORK 
+-0.3010 <s> BE </s> 
+-0.3010 <s> BEING </s> 
+-0.3010 <s> BUT </s> 
+-0.3010 <s> DID </s> 
+-0.3010 <s> FIRST </s> 
+-0.3010 <s> IN </s> 
+-0.3010 <s> IS </s> 
+-0.3010 <s> IT </s> 
+-0.3010 <s> LUCKY </s> 
+-0.3010 <s> NOW </s> 
+-0.3010 <s> OF </s> 
+-0.3010 <s> ON </s> 
+-0.3010 <s> RIGHT </s> 
+-0.3010 <s> SAY </s> 
+-0.3010 <s> WHAT </s> 
+-0.3010 <s> WHICH </s> 
+-0.3010 <s> WITH </s> 
+-0.3010 BE </s> <s> 
+-0.3010 BEING </s> <s> 
+-0.3010 BUT </s> <s> 
+-0.3010 DID </s> <s> 
+-0.3010 FIRST </s> <s> 
+-0.3010 IN </s> <s> 
+-0.3010 IS </s> <s> 
+-0.3010 IT </s> <s> 
+-0.3010 LUCKY </s> <s> 
+-0.3010 NOW </s> <s> 
+-0.3010 OF </s> <s> 
+-0.3010 ON </s> <s> 
+-0.3010 RIGHT </s> <s> 
+-0.3010 SAY </s> <s> 
+-0.3010 WHAT </s> <s> 
+-0.3010 WHICH </s> <s> 
+-0.3010 WITH </s> <s> 
+
+\end\

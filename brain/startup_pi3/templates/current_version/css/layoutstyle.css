@@ -1,0 +1,164 @@
+/*body {
+  background-image: url("biblibg.jpg"); 
+
+}*/
+
+div#container {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-color: #E6E6FA;
+    padding-left: 5%;
+}
+
+div#navigation {
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+div.camera {
+    float: left;
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+div.control {
+    float: left;
+    height: auto;
+    width: auto;
+    margin-left:5%;
+}
+
+table#drive_table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#mediacenter {
+    clear: both;
+    background-color: #AFEEEE;
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+
+/*div#container { margin-left:10%; margin-right:auto; width:80%;}*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 1px 1px
+}
+
+td {
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+}
+
+.control_btn {
+    width: 80px;
+    height: 30px;
+    line-height: 18px;
+    border: 0;
+    border-radius: 10px;
+    margin: 4px 0 0 10px;
+    overflow: visible;
+    background-color: #4DFF4D;
+    font: normal 12px arial, Monospace;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 9px #999;
+}
+
+.control_btn:hover {
+    background-color: #3e8e41
+}
+
+.control_btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.media_btn {
+    width: 90px;
+    height: 30px;
+    line-height: 18px;
+    border: 0;
+    border-radius: 10px;
+    margin: 4px 0 0 10px;
+    overflow: visible;
+    background-color: #6495ED;
+    font: normal 12px arial, Monospace;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 9px #999;
+}
+
+.media_btn:hover {
+    background-color: #3e8e41
+}
+
+.media_btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.switch_btn {
+    width: 80px;
+    height: 30px;
+    line-height: 18px;
+    border: 0;
+    border-radius: 10px;
+    margin: 4px 0 0 10px;
+    overflow: visible;
+    background-color: #9932CC;
+    font: normal 12px arial, Monospace;
+    font-weight: bold;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 9px #999;
+}
+
+.switch_btn:hover {
+    background-color: #3e8e41
+}
+
+.switch_btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+div.form-group select {
+    /*background: transparent;*/
+    width: 200px;
+    padding: 2px;
+    font-size: 14px;
+    border: 0;
+    border-radius: 0;
+}
+
+div.form-group label {
+    width: 80px;
+    display: inline-block;
+    text-align: right;
+}

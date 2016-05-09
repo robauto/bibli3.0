@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Wei Miao and Qi LIU">
+    <title>BiBli Control Center</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/starter-template.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layoutstyle.css') }}" />
+    <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  -->
+    <script src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <!--Path for local test without flask-->
+    <!--
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    -->
+    <!-- Custom styles for this template 
+    <link rel="stylesheet" type="text/css" href="css/starter-template.css" />
+    <link rel="stylesheet" type="text/css" href="css/layoutstyle.css" />
+    -->
+    <!--
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  -
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+-->
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Robauto - BiBli Control Center</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://www.robauto.co/" target="_blank">Home</a></li>
+                    <li><a href="http://www.robauto.co/bibli-pilot-program/" target="_blank">About</a></li>
+                    <li><a href="https://www.facebook.com/officialrobauto?_rdr=p" target="_blank">Support</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-6" style="background-color:lavender;">
+            <div class="container-fluid">
+                <h3>BiBli Navigation Center</h3>
+                <img id="vdostream" src="{{ url_for('video_feed') }}" alt="Video stream off">
+                <script language="javascript" type="text/javascript">
+                function Button_onclick(direction) {
+                    $.ajax({
+                        url: '/' + direction
+                    });
+                }
+
+                function Button_movie(movie) {
+                    $.ajax({
+                        url: '/movie/' + movie
+                    });
+                }
+
+                function Button_music(music) {
+                    $.ajax({
+                        url: '/music/' + music
+                    });
+                }
+                </script>
+                <script language="javascript" type="text/javascript">
+                //initial state for video
+                //var vdsm = document.getElementById("vdostream");
+                //vdsm.src = "{{ url_for('static', filename='img/biblicam.jpg') }}";
+                //for local test
+                //vdsm.src = "img/biblicam.jpg";
+                //
+                function vdo_stm(vds) {
+                    var vdsm = document.getElementById("vdostream");
+                    if (vds == 1) {
+                        vdsm.src = "{{ url_for('video_feed') }}";
+                    } else if (vds == 0) {
+                        vdsm.src = "{{ url_for('static', filename='img/biblicam.jpg') }}";
+                    }
+                }
+
+                function Button_desktop(dstp) {
+                    $.ajax({
+                        url: '/desktop/' + dstp
+                    });
+                }
+
+                </script>
+                <br>
+                <input id="streamON" class="switch_btn" type="button" value="CameraON" onclick="vdo_stm(1)" />
+                <input id="streamOFF" class="switch_btn" type="button" value="CameraOFF" onclick="vdo_stm(0)" />
+                <input id="showdesktop" class="switch_btn" type="button" value="ShowLogo" onclick="Button_desktop('show')" />
+                <table id="control">
+                    <tr>
+                        <td colspan="3" style="text-align: center">
+                            Control
+                        </td>
+                        <td colspan="2" style="text-align: center">
+                            Auto-pilot
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center">
+                            <input id="btnUp" class="control_btn" type="button" value="Forward(W)" accesskey="w" onclick="Button_onclick('f')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnFwd" class="media_btn" type="button" value="AutoDrive(V)" accesskey="v" onclick="Button_onclick('v')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center">
+                            <input id="btnLeft" class="control_btn" type="button" value="Left(A)" accesskey="a" onclick="Button_onclick('l')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnCtr" class="control_btn" type="button" value="Stop(E)" accesskey="e" onclick="Button_onclick('s')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnRight" class="control_btn" type="button" value="Right(D)" accesskey="d" onclick="Button_onclick('r')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: center">
+                            <input id="btnDown" class="control_btn" type="button" value="Reverse(S)" accesskey="s" onclick="Button_onclick('b')" />
+                        </td>
+                    </tr>
+                </table>
+                <br> Keyboard Control:
+                <input id="keyctrl" class="switch_btn" type="button" , value="KeyOn" />
+                <br>
+                <br>
+                <script language="javascript" type="text/javascript">
+                var keyevent = [99, 99];
+                $("#keyctrl").keydown(function(event) {
+
+                    keyevent[0] = keyevent[1];
+                    keyevent[1] = event.which;
+                    //console.log(keyevent);
+                    if (keyevent[0] != keyevent[1]) {
+                        //console.log('different');
+                        if (event.which == 87) {
+                            Button_onclick('f')
+                        } else if (event.which == 65) {
+                            Button_onclick('l')
+                        } else if (event.which == 68) {
+                            Button_onclick('r')
+                        } else if (event.which == 83) {
+                            Button_onclick('b')
+                        } else if (event.which == 69) {
+                            Button_onclick('s')
+                        } else if (event.which == 86) {
+                            Button_onclick('v')
+                        }
+                    }
+                });
+                $("#keyctrl").keyup(function(event) {
+                    keyevent = [99, 99];
+                    if (event.which == 87) {
+                        Button_onclick('s')
+                    } else if (event.which == 65) {
+                        Button_onclick('s')
+                    } else if (event.which == 68) {
+                        Button_onclick('s')
+                    } else if (event.which == 83) {
+                        Button_onclick('s')
+                    } else if (event.which == 69) {
+                        Button_onclick('s')
+                    } else if (event.which == 86) {
+                        Button_onclick('v')
+                    }
+
+                });
+                </script>
+            </div>
+        </div>
+        <div class="col-sm-6" style="background-color:lavenderblush;">
+            <div class="container-fluid">
+                <h3>BiBli Media Center</h3>
+                <p>Type any text to have Bibli speak:</p>
+                <input id="Biblisay" type="text" name="saytext" size="60" />
+                <script language="javascript" type="text/javascript">
+                function Button_saysth() {
+                    var msg = document.getElementById("Biblisay").value;
+                    $.ajax({
+                        url: '/saysth/' + msg
+                    });
+                }
+                </script>
+                <br>
+                <input id="btnmsg" class="switch_btn" type="button" value="Speak" onclick="Button_saysth()" />
+                <br>
+                <br>
+                <script language="javascript" type="text/javascript">
+
+                function checkVtxt() {
+                    var checkText=$("#video_sl").find("option:selected").text();
+                     console.log(checkText);
+                     $.ajax({
+                        url: '/videos/' + checkText
+                     });
+                }
+
+                function checkMtxt() {
+                    var checkText=$("#sound_sl").find("option:selected").text();
+                     console.log(checkText);
+                     $.ajax({
+                        url: '/sounds/' + checkText
+                     });
+                }
+
+                function checkStxt() {
+                    var checkText=$("#story_sl").find("option:selected").text();
+                     console.log(checkText);
+                     $.ajax({
+                        url: '/stories/' + checkText
+                     });
+                }
+
+                function Button_video(vdoctl) {
+                    $.ajax({
+                        url: '/videoctrl/' + vdoctl
+                    });
+                }
+
+                function Button_sound(sndctl) {
+                    $.ajax({
+                        url: '/soundctrl/' + sndctl
+                    });
+                }
+
+                function Button_story(styctl) {
+                    $.ajax({
+                        url: '/storytrl/' + styctl
+                    });
+                }
+
+                function Button_jasper(jsp) {
+                    $.ajax({
+                        url: '/jasper/' + jsp
+                    });
+                }
+
+                </script>
+                <table id="control">
+                    <tr>
+                        <td style="text-align: center">
+                            <input id="btnvcmd" class="media_btn" type="button" value="VoiceCmdON" onclick="Button_jasper('jON')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnMRight" class="media_btn" type="button" value="VoiceCmdOFF" onclick="Button_jasper('jOFF')" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: center">
+                            <input id="btnMLeft" class="media_btn" type="button" value="PreCamON" onclick="Button_movie('p')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnMRight" class="media_btn" type="button" value="PreCamOFF" onclick="Button_movie('o')" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: center">
+                            <input id="btnRev" class="media_btn" type="button" value="RoamMusON" onclick="Button_music('mon')" />
+                        </td>
+                        <td style="text-align: center">
+                            <input id="btnRev" class="media_btn" type="button" value="RoamMusOFF" onclick="Button_music('moff')" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="sound_s">Videos(select one):</label>
+                                    <select class="form-control" id="video_sl" onChange="checkVtxt();">
+                                        <option>--select one to play--</option>
+                                        <option>backkom1.mp4</option>
+                                        <option>backkom2.mp4</option>
+                                        <option>backkom3.mp4</option>
+                                        <option>backkom4.mp4</option>
+                                        <option>backkom5.mp4</option>
+                                        <option>backkom6.mp4</option>
+                                        <option>backkom7.mp4</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </td>
+                    <td>
+                    <input id="von" class="switch_btn" type="button" value="Pause/ON" onclick="Button_video('pause')" />
+                    <input id="voff" class="switch_btn" type="button" value="Stop" onclick="Button_video('stp')" />
+                    </td>
+                    <tr>
+                        <td colspan="3">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="sound_s">Music Pod (select one):</label>
+                                    <select class="form-control" id="sound_sl" onChange="checkMtxt();">
+                                        <option>--select one to play--</option>
+					                    <option>train.mp3</option>
+                                        <option>Big_Big_World.mp3</option>
+                                        <option>Roar.mp3</option>
+                                        <option>Trouble_Is_A_Friend.mp3</option>
+                                        <option>CalmBibli.mp3</option>
+					                    <option>RockerBibli.mp3</option>
+					                    <option>train.mp3</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </td>
+                    <td>
+                    <input id="musicon" class="switch_btn" type="button" value="Pause/ON" onclick="Button_sound('pause')" />
+                    <input id="musicoff" class="switch_btn" type="button" value="Stop" onclick="Button_sound('stp')" />
+                    </td>
+
+
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label for="story_s">Story Book (select one):</label>
+                                    <select class="form-control" id="story_sl" onChange="checkStxt();">
+                                        <option>--select one to play--</option>
+                                        <option>Nightingale.mp3</option>
+                                        <option>The_Mermaid_Princess.mp3</option>
+                                        <option>The_Unwise_Hans.mp3</option>
+                                        <option>The_Hen_and_the_Little_Girl.mp3</option>
+                                        <option>The_Shadow.mp3</option>
+
+                                    </select>
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                        <input id="musicon" class="switch_btn" type="button" value="Pause/ON" onclick="Button_story('pause')" />
+                        <input id="musicoff" class="switch_btn" type="button" value="Stop" onclick="Button_story('stp')" />
+                        </td>
+                    </tr>
+                </table>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

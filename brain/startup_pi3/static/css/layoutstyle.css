@@ -1,0 +1,50 @@
+
+
+body {
+	background-image: url("biblibg.jpg");	
+}
+
+div#container { margin-left:10%; margin-right:auto; width:80%;}
+table#control {}
+td
+  {
+  padding:3px;
+  }
+
+ .control_btn{width:80px;
+ 	height:30px;
+ 	line-height:18px;
+ 	border: 0;
+ 	border-radius: 10px;
+ 	margin:4px 0 0 10px;
+ 	overflow: visible;
+ 	background-color: #4DFF4D;
+ 	font: normal 12px arial, Monospace;
+ 	font-weight: bold;
+ 	
+
+  }
+
+ .media_btn{width:90px;
+ 	height:30px;
+ 	line-height:18px;
+ 	border: 0;
+ 	border-radius: 10px;
+ 	margin:4px 0 0 10px;
+ 	overflow: visible;
+ 	background-color: #E1C3FF;
+ 	font: normal 12px arial, Monospace;
+ 	font-weight: bold;
+ }
+
+ .switch_btn{width:80px;
+ 	height:30px;
+ 	line-height:18px;
+ 	border: 0;
+ 	border-radius: 10px;
+ 	margin:4px 0 0 10px;
+ 	overflow: visible;
+ 	background-color: #CCFFFF;
+ 	font: normal 12px arial, Monospace;
+ 	font-weight: bold;
+ }

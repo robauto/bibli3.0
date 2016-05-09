@@ -1,0 +1,157 @@
+Language model created by QuickLM on Thu Dec 31 11:28:24 EST 2015
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 33 sentences and 35 words
+
+\data\
+ngram 1=35
+ngram 2=66
+ngram 3=33
+
+\1-grams:
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-2.2967 ARE -0.2218
+-2.2967 BACK -0.2218
+-2.2967 BE -0.2218
+-2.2967 BEING -0.2218
+-2.2967 BUT -0.2218
+-2.2967 DANCE -0.2218
+-2.2967 DID -0.2218
+-2.2967 FIRST -0.2218
+-2.2967 FORWARD -0.2218
+-2.2967 FRIEND -0.2218
+-2.2967 GOOD -0.2218
+-2.2967 IN -0.2218
+-2.2967 INTRODUCE -0.2218
+-2.2967 IS -0.2218
+-2.2967 IT -0.2218
+-2.2967 JASPER -0.2218
+-2.2967 JOB -0.2218
+-2.2967 JOKE -0.2218
+-2.2967 LEFT -0.2218
+-2.2967 LOVE -0.2218
+-2.2967 LUCKY -0.2218
+-2.2967 NOW -0.2218
+-2.2967 OF -0.2218
+-2.2967 ON -0.2218
+-2.2967 RIGHT -0.2218
+-2.2967 SAY -0.2218
+-2.2967 STOP -0.2218
+-2.2967 THOMAS -0.2218
+-2.2967 TIME -0.2218
+-2.2967 WHAT -0.2218
+-2.2967 WHICH -0.2218
+-2.2967 WITH -0.2218
+-2.2967 WORK -0.2218
+
+\2-grams:
+-1.8195 <s> ARE 0.0000
+-1.8195 <s> BACK 0.0000
+-1.8195 <s> BE 0.0000
+-1.8195 <s> BEING 0.0000
+-1.8195 <s> BUT 0.0000
+-1.8195 <s> DANCE 0.0000
+-1.8195 <s> DID 0.0000
+-1.8195 <s> FIRST 0.0000
+-1.8195 <s> FORWARD 0.0000
+-1.8195 <s> FRIEND 0.0000
+-1.8195 <s> GOOD 0.0000
+-1.8195 <s> IN 0.0000
+-1.8195 <s> INTRODUCE 0.0000
+-1.8195 <s> IS 0.0000
+-1.8195 <s> IT 0.0000
+-1.8195 <s> JASPER 0.0000
+-1.8195 <s> JOB 0.0000
+-1.8195 <s> JOKE 0.0000
+-1.8195 <s> LEFT 0.0000
+-1.8195 <s> LOVE 0.0000
+-1.8195 <s> LUCKY 0.0000
+-1.8195 <s> NOW 0.0000
+-1.8195 <s> OF 0.0000
+-1.8195 <s> ON 0.0000
+-1.8195 <s> RIGHT 0.0000
+-1.8195 <s> SAY 0.0000
+-1.8195 <s> STOP 0.0000
+-1.8195 <s> THOMAS 0.0000
+-1.8195 <s> TIME 0.0000
+-1.8195 <s> WHAT 0.0000
+-1.8195 <s> WHICH 0.0000
+-1.8195 <s> WITH 0.0000
+-1.8195 <s> WORK 0.0000
+-0.3010 ARE </s> -0.3010
+-0.3010 BACK </s> -0.3010
+-0.3010 BE </s> -0.3010
+-0.3010 BEING </s> -0.3010
+-0.3010 BUT </s> -0.3010
+-0.3010 DANCE </s> -0.3010
+-0.3010 DID </s> -0.3010
+-0.3010 FIRST </s> -0.3010
+-0.3010 FORWARD </s> -0.3010
+-0.3010 FRIEND </s> -0.3010
+-0.3010 GOOD </s> -0.3010
+-0.3010 IN </s> -0.3010
+-0.3010 INTRODUCE </s> -0.3010
+-0.3010 IS </s> -0.3010
+-0.3010 IT </s> -0.3010
+-0.3010 JASPER </s> -0.3010
+-0.3010 JOB </s> -0.3010
+-0.3010 JOKE </s> -0.3010
+-0.3010 LEFT </s> -0.3010
+-0.3010 LOVE </s> -0.3010
+-0.3010 LUCKY </s> -0.3010
+-0.3010 NOW </s> -0.3010
+-0.3010 OF </s> -0.3010
+-0.3010 ON </s> -0.3010
+-0.3010 RIGHT </s> -0.3010
+-0.3010 SAY </s> -0.3010
+-0.3010 STOP </s> -0.3010
+-0.3010 THOMAS </s> -0.3010
+-0.3010 TIME </s> -0.3010
+-0.3010 WHAT </s> -0.3010
+-0.3010 WHICH </s> -0.3010
+-0.3010 WITH </s> -0.3010
+-0.3010 WORK </s> -0.3010
+
+\3-grams:
+-0.3010 <s> ARE </s>
+-0.3010 <s> BACK </s>
+-0.3010 <s> BE </s>
+-0.3010 <s> BEING </s>
+-0.3010 <s> BUT </s>
+-0.3010 <s> DANCE </s>
+-0.3010 <s> DID </s>
+-0.3010 <s> FIRST </s>
+-0.3010 <s> FORWARD </s>
+-0.3010 <s> FRIEND </s>
+-0.3010 <s> GOOD </s>
+-0.3010 <s> IN </s>
+-0.3010 <s> INTRODUCE </s>
+-0.3010 <s> IS </s>
+-0.3010 <s> IT </s>
+-0.3010 <s> JASPER </s>
+-0.3010 <s> JOB </s>
+-0.3010 <s> JOKE </s>
+-0.3010 <s> LEFT </s>
+-0.3010 <s> LOVE </s>
+-0.3010 <s> LUCKY </s>
+-0.3010 <s> NOW </s>
+-0.3010 <s> OF </s>
+-0.3010 <s> ON </s>
+-0.3010 <s> RIGHT </s>
+-0.3010 <s> SAY </s>
+-0.3010 <s> STOP </s>
+-0.3010 <s> THOMAS </s>
+-0.3010 <s> TIME </s>
+-0.3010 <s> WHAT </s>
+-0.3010 <s> WHICH </s>
+-0.3010 <s> WITH </s>
+-0.3010 <s> WORK </s>
+
+\end\
