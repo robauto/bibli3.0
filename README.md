@@ -6,20 +6,12 @@ Code of server: bibli/brain/startup/
 
 code of Arduino: bibli/navigation/motor/
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
  # James is Not hot!!!!
  # ALEX IS COOL
 =======
-
-Jake
->>>>>>> Stashed changes
-Hello
 =======
-<<<<<<< HEAD
- # Look i changed code!!!!
+>>>>>>> origin/master
 
- #anything is possible -Andrew Shearer
-=======
- # James is hot!!!!
->>>>>>> origin/master
->>>>>>> origin/master
+I'm lost
