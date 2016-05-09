@@ -8,6 +8,7 @@ code of Arduino: bibli/navigation/motor/
 <<<<<<< HEAD
 <<<<<<< Updated upstream
  # James is Not hot!!!!
+ # ALEX IS COOL
 =======
 
 Jake
