@@ -1,17 +1,11 @@
 # bibli
 Master BiBli Code
 
+New to Git? this would help:
+https://help.github.com/desktop/guides/
+
 
 Code of server: bibli/brain/startup/
 
 code of Arduino: bibli/navigation/motor/
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< Updated upstream
- # James is Not hot!!!!
- # ALEX IS COOL
-=======
-=======
->>>>>>> origin/master
 
-I'm lost.. :(
