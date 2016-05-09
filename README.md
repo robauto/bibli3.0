@@ -6,8 +6,9 @@ Code of server: bibli/brain/startup/
 
 code of Arduino: bibli/navigation/motor/
 <<<<<<< Updated upstream
- # James is hot!!!!
+ # James is Not hot!!!!
 =======
 
 Jake
 >>>>>>> Stashed changes
+Hello
