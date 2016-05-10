@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from flask import Flask, render_template, Response
 import base
+import demo
 import play_video
 import time
 import subprocess
@@ -18,7 +19,7 @@ app = Flask(__name__)
 
 movedir = base.MoveCtrl()
 movie_1 = play_video.Play_vdo()
-
+demos = demo.DemoList()
 
 
 #pan =servo.ServoController(25)
@@ -72,10 +73,11 @@ def moveon(direction):
 		movedir.move('v')
 	
 	elif direction =='x':
-		movedir.move('x')
-		subprocess.call("mplayer -vo fbdev2:/dev/fb1 -x 240 -y 320 -framedrop -quiet -input file=/home/pi/fifos /home/pi/BiBli/brain/demos/bibli_demo.mp4 < /dev/null && sudo fbi -T 2 -d /dev/fb1 -noverbose -a /home/pi/BiBli/media/image/bg2.jpg &", shell=True)
-                time.sleep(2)
-		movedir.move('s')		
+		demos.demoAction()
+		#movedir.move('x')
+		#subprocess.call("mplayer -vo fbdev2:/dev/fb1 -x 240 -y 320 -framedrop -quiet -input file=/home/pi/fifos /home/pi/BiBli/brain/demos/bibli_demo.mp4 < /dev/null && sudo fbi -T 2 -d /dev/fb1 -noverbose -a /home/pi/BiBli/media/image/bg2.jpg &", shell=True)
+        #        time.sleep(2)
+		#movedir.move('s')		
     	
 	return direction
 
