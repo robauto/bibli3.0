@@ -9,7 +9,7 @@ demo_do = base.MoveCtrl()
 class DemoList:
     def demoAction(self):
         #### Play media file
-        subprocess.call("mplayer -vo fbdev2:/dev/fb1 -x 240 -y 320 -framedrop -quiet -input file=/home/pi/fifos /home/pi/BiBli/brain/demos/bibli_demo_Pi.mp4 < /dev/null && sudo fbi -T 2 -d /dev/fb1 -noverbose -a /home/pi/BiBli/media/image/bg2.jpg &", shell=True)
+        subprocess.call("mplayer -vo fbdev2:/dev/fb1 -x 240 -y 320 -framedrop -quiet -input file=/home/pi/fifos /home/pi/BiBli/brain/demos/bibli_demo_Pi.mp4 < /dev/null && sudo fbi -T 2 -d /dev/fb1 -noverbose -a /home/pi/BiBli/media/image/Pi image.jpg &", shell=True)
         time.sleep(2)
         #### BiBli motion
         demo_do.move('f')
