@@ -24,12 +24,10 @@ class DemoList:
         time.sleep(2)
         demo_do.move('r')
         time.sleep(2)
-	demo_do.move('b')
+        demo_do.move('b')
         time.sleep(1)
         demo_do.move('s')
-	time.sleep(1)
+        time.sleep(1)
         demo_do.move('f')
-	time.sleep(1)
+        time.sleep(1)
         demo_do.move('s')
-
-  
