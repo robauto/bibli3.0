@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;DiceProbability&apos; to &apos;DiceProbability1&apos;&#x0A;- Original project: &apos;random dice &apos;&#x0A;- Original element: &apos;DiceProbability&apos;&#x0A;- Renamed element: &apos;DiceProbability1&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DiceProbability&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{DiceProbability.java[DiceProbability" matchStrategy="1" name="DiceProbability1" qualified="false" references="true" similarDeclarations="false" stamp="1457402917107" textual="false" version="1.0"/>
+</session>

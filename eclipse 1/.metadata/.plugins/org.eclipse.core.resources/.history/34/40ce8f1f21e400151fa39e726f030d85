@@ -1,0 +1,55 @@
+
+//The mona class calcultes the overdue of books for the CSA media center
+
+//Author:Pranav
+//Version-10/10/15
+import java.util.Scanner;
+public class Mona2 {
+public static void main(String[] args) {
+	 Scanner in = new Scanner(System.in);    
+     
+     System.out.print("Please enter your name (Last, First): ");
+     String name = in.nextLine();
+     String  firstName = name.split(",")[1].trim(); 
+     String lastName = name.split(",")[0].trim();
+     
+ 
+	System.out.print(" enter your phone number((###) ###-####):");
+    String phone=in.nextLine();
+		
+	System.out.print("enter the title of the book: ");
+	String nameofbook=in.nextLine();
+	
+	
+	
+	System.out.print("enter the date checked out(mm//dd/yyyy):");
+	String datecheckout=in.nextLine() ;
+	
+	System.out.print("days late:");	
+     String dayslate=  in.nextLine();
+	
+		
+	System.out.print("daily fine:");
+    String dailyfine= in.nextLine();
+	
+    
+    String email = (firstName.charAt(0) + lastName.substring(0,2) + phone.substring(phone.length()-4,phone.length())).toLowerCase();
+    email += "@csamediacenter.com";
+    
+    
+    
+	System.out.println("\n");
+	System.out.println("---------Text for email message------");
+	
+	System.out.println("To: "+firstName+" "+lastName+" ("+email+")");
+	System.out.println("From: Mona (mona@csamediacenter.com)");
+	System.out.println("Subject: Overdue Book Notice");
+	System.out.println("=============================================================================");
+	
+	System.out.println(nameofbook+" "+("was checked out on:"+" "+datecheckout));
+	System.out.println("This book is currently"+" "+dayslate+" "+("day(s) late"));
+	Double totalfine = Double.parseDouble(dailyfine) * Integer.parseInt(dayslate);
+	System.out.println("Your fine has accumulated to:"+totalfine+" "+"dollars(s)");
+}
+}
+

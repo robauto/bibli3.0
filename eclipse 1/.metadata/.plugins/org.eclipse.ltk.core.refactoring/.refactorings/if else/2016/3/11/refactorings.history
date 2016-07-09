@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;BMR&apos; to &apos;BMR1&apos;&#x0A;- Original project: &apos;if else&apos;&#x0A;- Original element: &apos;BMR&apos;&#x0A;- Renamed element: &apos;BMR1&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;BMR&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{BMR.java[BMR" matchStrategy="1" name="BMR1" qualified="false" references="true" similarDeclarations="false" stamp="1457314570322" textual="false" version="1.0"/>
+</session>

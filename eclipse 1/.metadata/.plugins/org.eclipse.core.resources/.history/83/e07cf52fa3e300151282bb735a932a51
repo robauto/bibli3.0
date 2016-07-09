@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+/**
+ * @author Pranav
+ *
+ */
+public class Box2 extends Rectangle2 {
+
+}

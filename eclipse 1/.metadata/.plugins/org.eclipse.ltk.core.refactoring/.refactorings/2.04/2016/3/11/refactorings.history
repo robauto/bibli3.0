@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;CalculationsV4&apos; to &apos;CalculationsV5&apos;&#x0A;- Original project: &apos;2.04&apos;&#x0A;- Original element: &apos;CalculationsV4&apos;&#x0A;- Renamed element: &apos;CalculationsV5&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CalculationsV4&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{CalculationsV4.java[CalculationsV4" matchStrategy="1" name="CalculationsV5" qualified="false" references="true" similarDeclarations="false" stamp="1457298191123" textual="false" version="1.0"/>
+</session>
