@@ -21,6 +21,7 @@ public class CaesarShiftTester1 {
                 int key=in.nextInt();
                 String encryptedMessage = CaesarShiftEncryption1.encrypt(message,key);
                 System.out.println(encryptedMessage);
+                
 
             }
             if (option == 2)
