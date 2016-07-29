@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename compilation unit &apos;WelnessMenu.java&apos; to &apos;WellnessMenu.java&apos;&#x0A;- Original project: &apos;4.06 welness&apos;&#x0A;- Original element: &apos;WelnessMenu.java&apos;&#x0A;- Renamed element: &apos;WellnessMenu.java&apos;" description="Rename compilation unit &apos;WelnessMenu.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{WelnessMenu.java" name="WellnessMenu.java" references="false" stamp="1444576223237" version="1.0"/>
-</session>
