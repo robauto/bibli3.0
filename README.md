@@ -13,8 +13,10 @@ support@robauto.co
 Wei Miao
 Qi Liu
 Jalali Hartman
+James Gardner
 Rhett Sandal
 Andrew Shearer
+Christian Kaan
 Matt Curry
 
 1. Set-up a wirless network (via hotspot or unused modem) with:
