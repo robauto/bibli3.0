@@ -2,7 +2,7 @@
 # bibli
 
 BiBli Robotic Operating System
-Version 1.0
+Version 2.1
 
 ROBAUTO, INC. 2016
 P.O. Box 4688
@@ -34,7 +34,9 @@ pw: 12345678
 5. Power up pi via micro-usb cable and battery.
 
 6. Go to any browser  (make sure your computer is also connected to wifi: bibli)
-*Note you can edit the default ssid of the Pi to run on your home network if you need to. The command panel should load at http://alpha.local:5000
+*Note you can edit the default ssid of the Pi to run on your home network if you need to. The command panel should load at http://alpha.local:5000\
+
+Hardware Kit: See http://www.robauto.co/bibli.html
 
 7. You can configure the robot ID (above, default is alpha), configure bluetooth and control the robot via game controller or robot
 
