@@ -1,3 +1,7 @@
+## Development Phase
+
+The goal in 2018-2019 is to get Jasper voice fully functional as part of the BiBli OS. We need to evaluate microphone vs phone and get thsi fully functional. 
+
 jasper-client
 =============
 
