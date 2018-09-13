@@ -4,6 +4,10 @@
 BiBli Robotic Operating System
 Version 2.1
 
+More documenation:
+
+https://docs.google.com/presentation/d/169s771b2DmyN1UYNMk2nO0gniecQ5qyNonMzaQuLid8/edit?usp=sharing
+
 ROBAUTO, INC. 2016
 P.O. Box 4688
 Boulder, Co 80306
