@@ -4,15 +4,13 @@
 BiBli Robotic Operating System
 Version 2.1
 
-More documenation:
-
-https://docs.google.com/presentation/d/169s771b2DmyN1UYNMk2nO0gniecQ5qyNonMzaQuLid8/edit?usp=sharing
-
 ROBAUTO, INC. 2016
 P.O. Box 4688
 Boulder, Co 80306
 www.ROBAUTO.co
 support@robauto.co
+
+#Contributors
 
 Wei Miao
 Qi Liu
@@ -22,6 +20,27 @@ Rhett Sandal
 Andrew Shearer
 Christian Kaan
 Matt Curry
+Robert Jaffee
+
+BiBli OS is designed to be a lightweight software operating system for Linux . The operating system adds voice, multimedia, 2WD autonomous driving, led lighting and a variety of robot control options. BiBli has pre-installed a beta version of [Jasper]https://jasperproject.github.io/(url) for voice and users are able to add/edit programs to their robot or IoT device.  
+
+The product is designed to give early access to robotics and machine learning to anyone and everyone. The initial version is need of the following:
+
+BiBli 3.0 Features To be Developed
+
+1. Easy command line install for Raspberry Pi
+2. New autonomous driving routines
+3. Creative new IoT devices and  uses
+4. Experimentation with swarming functions.
+5. Experimentation with voice control. 
+
+Other innovations as you see!
+
+More Info:
+http://www.robauto.co/bibli.html
+
+Documentation/How-to:
+https://docs.google.com/presentation/d/169s771b2DmyN1UYNMk2nO0gniecQ5qyNonMzaQuLid8/edit#slide=id.p1
 
 1. Set-up a wirless network (via hotspot or unused modem) with:
 
