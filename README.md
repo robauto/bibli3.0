@@ -1,5 +1,4 @@
-# bibli
-# bibli
+BiBli OS
 
 BiBli Robotic Operating System
 Version 2.1
