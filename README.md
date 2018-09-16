@@ -1,7 +1,7 @@
 BiBli OS
 
 BiBli Robotic Operating System
-Version 2.1
+Version 3.0
 
 ROBAUTO, INC. 2016
 P.O. Box 4688
