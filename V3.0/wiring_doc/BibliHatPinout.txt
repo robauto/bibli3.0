@@ -30,3 +30,12 @@ ANALOG_CLK        |      18
 ANALOG_MISO       |      23
 ANALOG_MOSI       |      24
 ANALOG_CS         |      25
+
+
+
+
+
+
+references:
+
+https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/mcp3008
