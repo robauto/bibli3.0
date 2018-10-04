@@ -1,0 +1,8 @@
+Package: bibli
+Version: 1.0-1
+Architecture: all
+Section: dev
+Maintainer: Robauto<jhartman@robauto.co>
+Priority: optional
+Depends: vim, nginx, python-flask, python-mutagen, python-netifaces, python-pil, gunicorn, supervisor, mplayer2, python-redis, redis-server, python-gevent, python-gevent-websocket, python-picamera, python-espeak, espeak, python-bluez, bluez, bluez-tools, pulseaudio-module-bluetooth, python-pexpect, rfkill
+Description: BiBli OS.

@@ -1,0 +1,150 @@
+
+.mdl-layout__drawer .mdl-layout-title {
+	background: url('/portrait') center center no-repeat rgb(244, 67, 54);
+	background-size: cover;
+	color: #fff;
+	text-shadow: 0 0.5px 2px rgba(0,0,0,0.75);
+	min-height: 80px;
+	padding: 30px 20px 20px;
+}
+
+
+
+#joypad {
+	background: #eee;
+	margin: 0 auto 20px;
+	display: block;
+	border-radius: 8px;
+
+	#joyboundary {
+		stroke-width: 3;
+		stroke: #ddd;
+		fill: none;
+	}
+	g#bg {
+		opacity: 0.33;
+	}
+	#arrows {
+		fill:#28b028;
+		stroke:#1c7a1c;
+		stroke-width:2;
+	}
+	#stop {
+		fill:#b01c2e;
+		stroke:#1c7a1c;
+		stroke-width:2;
+	}
+}
+
+#bluetooth {
+	.mdl-cell {
+		margin: 0 auto;
+	}
+	#bt-loading {
+		display: block;
+		margin: 50px auto;
+	}
+	#found-devices {
+		table {
+			margin: 0 auto;
+		}
+	}
+}
+
+#program {
+	.mdl-cell {
+		margin: 0 auto;
+		.mdl-list__item-avatar {
+			border-radius: 8px;
+		}
+	}
+}
+
+#vdostream {
+	display: block;
+	margin: 0 auto 20px;
+	min-width: 320px;
+	min-height: 240px;
+	background-color: #000;
+}
+
+#camera-cell, #navigation-cell {
+	text-align: center;
+	.mdl-switch {
+		width: 150px;
+		margin-bottom: 20px;
+	}
+}
+
+.speak-cell {
+	padding-left: 20px;
+	.mdl-textfield {
+		margin: 20px auto 0;
+	}
+}
+
+h3 {
+	text-align: center;
+}
+
+.media-cell {
+	table {
+		margin: 0 auto;
+	}
+	form {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	#addmusic {
+		text-align: center;
+	}
+}
+
+#color-palette {
+	overflow: hidden;
+	max-width: 462px;
+	margin: 0 auto;
+	text-align: center;
+	.swatch {
+		border: none;
+		width: 42px;
+		height: 42px;
+		display: inline-block;
+		margin: 12px;
+		transition: all 0.5s;
+		&.selected {
+			height: 54px;
+			width: 54px;
+			margin: 6px;
+		}
+	}
+}
+
+.biblis {
+	.mdl-card {
+		width: 230px;
+		margin: 0 auto 24px;
+	}
+	.mdl-card__title {
+		background: url('/portrait') center center no-repeat rgb(244, 67, 54);
+		background-size: cover;
+		color: #fff;
+		text-shadow: 0 0.5px 2px rgba(0,0,0,0.75);
+	}
+}
+
+#settings {
+	.mdl-cell {
+		margin: 0 auto 24px;
+	}
+	#portrait-change {
+		img {
+			max-width: 100%;
+			margin-bottom: 24px;
+		}
+		input[type='file'] {
+			display: block;
+			margin-bottom: 24px;
+		}
+	}
+}

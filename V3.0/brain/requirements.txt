@@ -1,0 +1,4 @@
+Flask
+pyserial
+eyed3
+mutagen

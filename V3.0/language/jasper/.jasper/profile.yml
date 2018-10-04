@@ -1,0 +1,10 @@
+carrier: ''
+first_name: Master
+gmail_password: ''
+location: '80302'
+phone_number: ''
+prefers_email: true
+stt_engine: sphinx
+tts_engine: espeak-tts
+espeak-tts:
+ voice: 'default+f2'

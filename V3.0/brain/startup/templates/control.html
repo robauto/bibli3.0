@@ -1,0 +1,326 @@
+{% extends "base.html" %}
+
+{% block hincludes %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bibli.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+{% endblock %}
+
+{% block fincludes %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/reconnecting-websocket.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bibli.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/drive.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/led.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/media.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/net.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bt.src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/demo.src.js') }}"></script>
+{% if camera %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/camera.src.js') }}"></script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+	<header class="mdl-layout__header">
+		<div class="mdl-layout__header-row">
+			<span class="mdl-layout-title">
+				<img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Robauto" style="height: 26px; vertical-align: middle;" />
+				BiBli - <span id='activepage'>{% if control %}control{% else %}network{% endif %}</span>
+			</span>
+		</div>
+		<!--
+		<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			<a href="#control" class="mdl-layout__tab is-active">Control</a>
+			<a href="#speech" class="mdl-layout__tab">Speech</a>
+			<a href="#media" class="mdl-layout__tab">Media</a>
+			<a href="#network" class="mdl-layout__tab">Network</a>
+		</div>
+		-->
+	</header>
+	<div class="mdl-layout__drawer">
+		<span class="mdl-layout-title">{{ name }}</span>
+		<nav class="mdl-navigation">
+			{% if control %}
+			<a class="mdl-navigation__link" href="#control">
+				<i class="material-icons" role="presentation">games</i>
+				<span>Control</span>
+			</a>
+			<a class="mdl-navigation__link" href="#program">
+				<i class="material-icons" role="presentation">code</i>
+				<span>Program</span>
+			</a>
+			{% endif %}
+			<a class="mdl-navigation__link" href="#speech">
+				<i class="material-icons" role="presentation">chat</i>
+				<span>Speech</span>
+			</a>
+			<a class="mdl-navigation__link" href="#music">
+				<i class="material-icons" role="presentation">music_note</i>
+				<span>Music</span>
+			</a>
+			<a class="mdl-navigation__link" href="#stories">
+				<i class="material-icons" role="presentation">book</i>
+				<span>Stories</span>
+			</a>
+			{% if video %}
+			<a class="mdl-navigation__link" href="#videos">
+					<i class="material-icons" role="presentation">movie</i>
+					<span>Videos</span>
+				</a>
+			{% endif %}
+			<a class="mdl-navigation__link" href="#network">
+				<i class="material-icons" role="presentation">wifi</i>
+				<span>Network</span>
+			</a>
+			<a class="mdl-navigation__link" href="#bluetooth">
+				<i class="material-icons" role="presentation">bluetooth</i>
+				<span>Bluetooth Audio</span>
+			</a>
+			<a class="mdl-navigation__link" href="#settings">
+				<i class="material-icons" role="presentation">settings</i>
+				<span>Settings</span>
+			</a>
+		</nav>
+	</div>
+	{% if control %}
+	<main class="mdl-layout__content">
+		<section class="mdl-layout__tab-panel is-active" id="control">
+			<div class="page-content mdl-grid">
+				{% if camera %}
+				<div id="camera-cell" class="mdl-cell mdl-cell--12-col mdl-cell--6-col-desktop">
+					<h3>Camera</h3>
+					<img id="vdostream" src="{{ url_for('static', filename='img/bg2.jpg') }}" alt="Video stream off" />
+					<!-- <button id="show-desktop" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Show Logo</button> -->
+					<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="vdoswitch">
+							<input type="checkbox" id="vdoswitch" class="mdl-switch__input" />
+							<span class="mdl-switch__label">On/Off</span>
+						</label>
+				</div>
+				{% endif %}
+				<div id="navigation-cell" class="mdl-cell mdl-cell--12-col mdl-cell--6-col-desktop">
+					<h3>Movement</h3>
+
+					<!--
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="joypad" width="360" height="360" viewBox="0 0 360 360">
+						<defs>
+							<radialGradient id="PointerGradient">
+								<stop offset="30%" stop-color="rgb(0,0,255)" stop-opacity="0" />
+								<stop offset="80%" stop-color="rgb(0,0,255)" stop-opacity="0.6" />
+								<stop offset="100%" stop-color="rgb(0,0,255)" stop-opacity="0" />
+							</radialGradient>
+						</defs>
+						<g id="bg">
+							<path id="arrows" d="M 180 47.28125 L 144.34375 73.625 L 161.03125 73.625 C 170.68243 87.47013 174.24523 133.84976 175.53125 160.90625 C 163.92158 132.37825 136.74177 82.17367 85.78125 69.59375 L 92.8125 54.90625 L 53.90625 78.09375 L 62.90625 117.71875 L 69.90625 103 C 136.88413 86.18651 169.5484 160.29965 176.125 177.40625 C 176.1398 177.99186 176.1777 177.93219 176.1875 178.375 C 140.21292 177.00106 135.24449 158.58825 127.4375 150.78125 C 119.36061 142.70429 109.48635 136.4375 97.21875 136.4375 C 72.683558 136.4375 52.65625 156.46479 52.65625 181 C 52.65625 205.53521 72.683558 228.125 97.21875 228.125 C 109.48635 228.125 123.17304 223.10822 131.25 215.03125 L 138.34375 221.78125 L 139.03125 192.90625 L 108.5625 192.65625 L 116.28125 200.0625 C 110.76571 205.57803 105.69259 208.96875 97.21875 208.96875 C 80.271063 208.96875 69.25 197.9477 69.25 181 C 69.25 164.0523 80.271063 150.46875 97.21875 150.46875 C 105.69259 150.46875 113.32822 153.85948 118.84375 159.375 C 124.15969 164.69094 142.31974 188.53373 176.125 184.15625 C 176.12 184.39502 176.131 184.32558 176.125 184.59375 C 169.54837 201.7004 136.8841 275.81348 69.90625 259 L 62.90625 244.28125 L 53.90625 283.90625 L 92.8125 307.09375 L 85.78125 292.40625 C 136.74177 279.82633 163.92158 229.62175 175.53125 201.09375 C 174.24523 228.15024 170.68243 274.52987 161.03125 288.375 L 144.34375 288.375 L 180 314.71875 L 215.65625 288.375 L 198.96875 288.375 C 188.25371 274.40111 185.12152 227.31503 184.1875 200.375 C 195.63397 228.77322 222.8373 279.72243 274.21875 292.40625 L 267.1875 307.09375 L 306.09375 283.90625 L 297.09375 244.28125 L 290.09375 259 C 222.80699 275.89103 190.14607 201.02771 183.78125 184.375 C 183.78025 184.2359 183.78225 184.28654 183.78125 184.15625 C 217.6374 188.58132 235.83616 164.69509 241.15625 159.375 C 246.67177 153.85948 254.30742 150.46875 262.78125 150.46875 C 279.72894 150.46875 290.75 164.0523 290.75 181 C 290.75 197.9477 279.72894 208.96875 262.78125 208.96875 C 254.30742 208.96875 249.23429 205.57803 243.71875 200.0625 L 251.4375 192.65625 L 220.96875 192.90625 L 221.65625 221.78125 L 228.75 215.03125 C 236.82697 223.10822 250.51366 228.125 262.78125 228.125 C 287.31645 228.125 307.34375 205.53521 307.34375 181 C 307.34375 156.46479 287.31645 136.4375 262.78125 136.4375 C 250.51366 136.4375 240.63948 142.70429 232.5625 150.78125 C 224.7526 158.59118 219.79263 177.01332 183.78125 178.375 C 183.78425 178.02456 183.77725 178.06549 183.78125 177.625 C 190.14598 160.97248 222.80687 86.10894 290.09375 103 L 297.09375 117.71875 L 306.09375 78.09375 L 267.1875 54.90625 L 274.21875 69.59375 C 222.8373 82.27758 195.63397 133.22678 184.1875 161.625 C 185.12152 134.68497 188.25371 87.59889 198.96875 73.625 L 215.65625 73.625 L 180 47.28125 z" />
+							<path id="stop" d="M 189.78125 156.1875 L 170.0625 156.25 L 156.1875 170.21875 L 156.25 189.9375 L 170.21875 203.8125 L 189.9375 203.75 L 203.8125 189.78125 L 203.75 170.0625 L 189.78125 156.1875 z" />
+						</g>
+						<rect id="joyboundary" x="40" y="40" width="280" height="280" rx="7" ry="7" />
+						<circle id="pointer" cx="180" cy="180" r="10" style="fill: url(#PointerGradient)" />
+							-->
+					<!-- <text id="coords" x="180" y="354" text-anchor="middle"></text> -->
+					<!-- </svg>  -->
+
+					<div class="" id="navigation-btns" style="text-align:center;">
+						<button class="drive_btns" id="drive_up" style="font-size:96px;color:green;background-color: Transparent;border: none;"><i class="fa fa-caret-square-o-up"></i></button><br>
+						<button class="drive_btns" id="drive_left" style="font-size:96px;color:green;background-color: Transparent;border: none;"><i class="fa fa-caret-square-o-left"></i></button>
+						<button class="drive_btns" id="drive_stop" style="font-size:96px;color:red;background-color: Transparent;border: none;"><i class="fa fa-dot-circle-o"></i></button>
+						<button class="drive_btns" id="drive_right" style="font-size:96px;color:green;background-color: Transparent;border: none;"><i class="fa fa-caret-square-o-right"></i></button><br>
+						<button class="drive_btns" id="drive_down" style="font-size:96px;color:green;background-color: Transparent;border: none;"><i class="fa fa-caret-square-o-down"></i></button>
+					</div>
+					<label style="width: 120px;" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="autopilotswitch">
+						<input type="checkbox" id="autopilotswitch" class="mdl-switch__input" />
+						<span class="mdl-switch__label">Autopilot</span>
+					</label>
+				</div>
+				<div class="mdl-cell mdl-cell--8-col mdl-cell--6-col-desktop">
+					<h3>LED Color</h3>
+					<div id="color-palette"></div>
+				</div>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="program">
+			<div class="page-content mdl-grid">
+				<div class="mdl-cell mdl-cell--6-col">
+					<ul id="demos" class="demo-list-three mdl-list"></ul>
+					<form id="adddemo">
+						<h4>Add a program</h4>
+						<input type="file" name="demo" required="required" accept=".py" />
+						<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Submit</button>
+					</form>
+					<div style="margin-top: 32px">
+						<a href="{{ url_for('static', filename='template.py') }}">Download program template</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		{% endif %}
+		<section class="mdl-layout__tab-panel" id="speech">
+			<div class="page-content mdl-grid">
+				<form id="speakform-en" class="speak-cell mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text" rows= "5" id="speaken" ></textarea>
+						<label class="mdl-textfield__label" for="speaken">What should BiBli say?</label>
+					</div>
+					<br />
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Speak</button>
+				</form>
+				<form id="speakform-es" class="speak-cell mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text" rows= "5" id="speaken" ></textarea>
+						<label class="mdl-textfield__label" for="speaken">¿Qué debería decir BiBli?</label>
+					</div>
+					<br />
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">Hablar</button>
+				</form>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="stories">
+			<div class="page-content mdl-grid">
+				<div id="story-cell" class="media-cell mdl-cell mdl-cell--12-col">
+					<h3>Stories</h3>
+					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+						<thead>
+							<tr>
+								<th class="mdl-data-table__cell--non-numeric"></th>
+								<th class="mdl-data-table__cell--non-numeric">Title</th>
+								<th class="mdl-data-table__cell--non-numeric">Author</th>
+								<th class="mdl-data-table__cell--non-numeric">Duration</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td class="mdl-data-table__cell--non-numeric" colspan="3">No stories found</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="music">
+			<div class="page-content mdl-grid">
+				<div class="mdl-cell mdl-cell--4-col" style="margin: 0 auto; text-align: center;">
+					Volume <span id="volume-label">{{volume}}%</span>
+					<input id="volume" class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="{{volume}}" />
+				</div>
+					<div id="music-cell" class="media-cell mdl-cell mdl-cell--12-col">
+						<h3>Music</h3>
+						<!--
+					<ul class="demo-list-three mdl-list">
+
+					</ul>-->
+						<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+							<thead>
+								<tr>
+									<th class="mdl-data-table__cell--non-numeric"></th>
+									<th class="mdl-data-table__cell--non-numeric">Title</th>
+									<th class="mdl-data-table__cell--non-numeric">Artist</th>
+									<th class="mdl-data-table__cell--non-numeric">Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td></td>
+									<td class="mdl-data-table__cell--non-numeric" colspan="3">No Music found</td>
+								</tr>
+							</tbody>
+						</table>
+						<form id="addmusic">
+							<h4>Add more music</h4>
+							<input type="file" name="music" required="required" accept="audio/mpeg,audio/ogg" />
+							<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Submit</button>
+						</form>
+					</div>
+				</div>
+		</section>
+		{% if video %}
+		<section class="mdl-layout__tab-panel" id="music">
+			<div class="page-content mdl-grid">
+				<div id="video-cell" class="media-cell mdl-cell mdl-cell--12-col">
+					<h3>Videos</h3>
+					<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+						<thead>
+							<tr>
+								<th class="mdl-data-table__cell--non-numeric"></th>
+								<th class="mdl-data-table__cell--non-numeric">Title</th>
+								<th class="mdl-data-table__cell--non-numeric">Duration</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td class="mdl-data-table__cell--non-numeric" colspan="2">No Videos found</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+		{% endif %}
+		<section class="mdl-layout__tab-panel {% if not control %}is-active{% endif %}" id="network">
+			<div class="page-content mdl-grid">
+				<div class="media-cell mdl-cell mdl-cell--12-col">
+					<h3>BiBlis</h3>
+				</div>
+				<div id="biblis0" class="biblis media-cell mdl-cell mdl-cell--4-col"></div>
+				<div id="biblis1" class="biblis media-cell mdl-cell mdl-cell--4-col"></div>
+				<div id="biblis2" class="biblis media-cell mdl-cell mdl-cell--4-col"></div>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="bluetooth">
+			<div class="page-content mdl-grid">
+				<div class="mdl-cell mdl-cell--8-col">
+					<div id="bt-paired" {% if not bluetooth %}style="display: none" {% endif %}>
+						<h4>Paired to: <span id="bt-paired-name">{{ bluetooth }}</span></h4>
+						<!--
+						<button id="bt-reconnect" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-js-ripple-effect">Reconnect</button>
+						<button id="bt-disconnect" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored dl-js-ripple-effect">Disconnect</button> -->
+						<button id="bt-remove" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent dl-js-ripple-effect">Remove</button>
+					</div>
+					<div id="bt-pair" {% if bluetooth %}style="display: none" {% endif %}>
+						<h4>Not paired yet</h4>
+						<p>Put your bluetooth headset or speaker in pairing mode and the press the scan button. You may need to scan more than once.</p>
+						<button id="bt-scan" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent dl-js-ripple-effect">Scan</button>
+						<div id="found-devices" style="display: none;">
+							<h3>Found devices</h3>
+							<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+								<thead>
+									<tr>
+										<th class="mdl-data-table__cell--non-numeric">Name</th>
+										<th class="mdl-data-table__cell--non-numeric">Address</th>
+										<th class="mdl-data-table__cell--non-numeric"></th>
+									</tr>
+								</thead>
+								<tbody>
+
+								</tbody>
+							</table>
+						</div>
+						<div id="bt-loading" class="mdl-spinner mdl-js-spinner"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="settings">
+			<div class="page-content mdl-grid">
+				<form class="mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop" id="name-change">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="bibliname" value="{{name}}" data-orig="{{name}}" pattern="[a-zA-Z]*" required="required" />
+						<label class="mdl-textfield__label" for="bibliname">Name (use only letters)</label>
+					</div>
+					<br />
+					<button type="submit" disabled="disabled" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Change Name</button>
+				</form>
+				<form class="mdl-cell mdl-cell--4-col mdl-cell--6-col-desktop" id="portrait-change">
+					<img src="/portrait" />
+					<input type="file" name="portrait" required="required" accept="image/svg+xml,image/jpeg,image/png,image/gif" />
+					<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">Change Portrait</button>
+				</form>
+			</div>
+		</section>
+	</main>
+	<div aria-live="assertive" aria-atomic="true" aria-relevant="text" class="mdl-snackbar mdl-js-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button type="button" class="mdl-snackbar__action"></button>
+	</div>
+</div>
+{% endblock content %}

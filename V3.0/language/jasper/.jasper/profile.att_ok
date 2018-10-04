@@ -1,0 +1,12 @@
+carrier: ''
+first_name: Bibli
+gmail_password: ''
+location: '80302'
+phone_number: ''
+prefers_email: true
+stt_engine: att
+att-stt:
+  app_key: rtpryprm2ygwmlgevlw7lhderaaquh1r
+  app_secret: 4hdmkekmueg2jakaqw9aqm29oygkmxq4
+
+tts_engine: google-tts
