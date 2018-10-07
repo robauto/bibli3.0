@@ -1,4 +1,4 @@
-#ROBAUTO Robotic Operating System
+#ROBAUTO Operating System
 ------------------------------------------
 Version 3.0
 
