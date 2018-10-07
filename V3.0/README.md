@@ -57,21 +57,31 @@ support@robauto.co
 #Contributors
 
 Wei Miao
-------------
+
 Qi Liu
-------------
+
 Jalali Hartman
-------------
+
+Christian Kaan
+
 Rhett Sandal
-------------
+
 Pi Chander
-------------
+
 Andrew Shearer
-------------
+
+The Weadleys
+
 Matthew Curry
-------------
+
 Hamzh Albar
-------------
+
+Robert Jaffe
+
+James Gardner
+
+
+
 
 #Sources
 [1] http://blog.miguelgrinberg.com/post/video-streaming-with-flask
