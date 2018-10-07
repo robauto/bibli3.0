@@ -4,6 +4,14 @@ Version 3.0
 To run a new instance flash an image to your SD disk
 Compatible with Raspberry Pi 2.0 - 3.0
 
+Documentation:
+
+https://docs.google.com/presentation/d/169s771b2DmyN1UYNMk2nO0gniecQ5qyNonMzaQuLid8/edit#slide=id.p1
+
+Current Image (10/2018):
+
+https://drive.google.com/file/d/1krSru0f-JyPPPCto6M7XDUL-3al_ClVJ/view?usp=sharing
+
 Primary Directories:
 
 /apps
@@ -48,12 +56,6 @@ Servo controller class
 Flask - sudo pip install flask
 RPIO - sudo pip install rpio 
 
-#(C) ROBAUTO, INC. 2016-2018
-P.O. Box 4688
-Boulder, Co 80306
-www.ROBAUTO.co
-support@robauto.co
-
 #Contributors
 
 Wei Miao
@@ -81,8 +83,6 @@ Robert Jaffe
 James Gardner
 
 
-
-
 #Sources
 [1] http://blog.miguelgrinberg.com/post/video-streaming-with-flask
 
@@ -91,6 +91,11 @@ James Gardner
 [3] http://arusahni.net/blog/2013/10/flask-multithreading.html
 
 [4] http://makezine.com/projects/raspberry-eye-remote-servo-cam/
-=======
+
+#(C) ROBAUTO, INC. 2016-2018
+P.O. Box 4688
+Boulder, Co 80306
+www.ROBAUTO.co
+support@robauto.co
 
 
