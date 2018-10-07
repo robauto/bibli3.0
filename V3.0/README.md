@@ -1,4 +1,5 @@
 #ROBAUTO Robotic Operating System
+------------------------------------------
 Version 3.0
 
 To run a new instance flash an image to your SD disk
