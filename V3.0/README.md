@@ -6,6 +6,12 @@ Version 3.0 (C) Robauto, Inc.
 To run a new instance flash an image to your SD disk
 Compatible with Raspberry Pi 2.0 - 3.0
 
+#To Access
+---------------
+ssh pi@ip.address
+pw: raspberry
+cd /var/local/bibli
+
 #Software Notes: 
 ------------------
 
