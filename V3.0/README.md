@@ -1,11 +1,15 @@
-#ROBAUTO Operating System
+BiBli Operating System
 ------------------------------------------
-Version 3.0
+Version 3.0 (C) Robauto, Inc. 
 
 To run a new instance flash an image to your SD disk
 Compatible with Raspberry Pi 2.0 - 3.0
 
-#Documentation:
+#Software Notes: 
+
+https://github.com/robauto/bibli3.0/blob/master/V3.0/wiring_doc/readme.md
+
+#Compatible Hardware:
 --------------
 
 https://docs.google.com/presentation/d/169s771b2DmyN1UYNMk2nO0gniecQ5qyNonMzaQuLid8/edit#slide=id.p1
