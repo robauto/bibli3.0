@@ -406,8 +406,8 @@ def move():
     if "autopilot" in data:
         if data["autopilot"]:
             print("Autopilot ON")
-        else:
-            print("Autopilot OFF")
+            #status = data["autopilot"]
+            # bibli.autoBibli(status)
     elif "demorun" in data:
         print("Running Demo")
         demo.demoActions(bibli)
@@ -458,13 +458,15 @@ def speak():
     subprocess.call("amixer sset Master 100%", shell=True)
     data = request.get_json()
     lang = data["lang"] if "lang" in data and len(data["lang"]) else "en"
-    espeak.set_parameter(espeak.Parameter.Rate, 165)
-    espeak.set_parameter(espeak.Parameter.Pitch, 70)
+    #espeak.set_parameter(espeak.Parameter.Rate, 165)
+    #espeak.set_parameter(espeak.Parameter.Pitch, 70)
     if lang == "es":
-        espeak.set_voice("europe/es")
+        # espeak.set_voice("europe/es")
+        os.system("sudo espeak -v es '" + data["msg"] + "' -a 165 -p 70")
     else:
-        espeak.set_voice("en-us")
-    espeak.synth(data["msg"])
+        os.system("sudo espeak -v en-us '" + data["msg"] + "' -a 165 -p 70")
+        # espeak.set_voice("en-us")
+    # espeak.synth(data["msg"])
     # subprocess.call('espeak -v%s+f3 -a200 %s &' % (lang, "'\"%s\"'" % data["msg"]), shell=True)
     return jsonify({})
 
