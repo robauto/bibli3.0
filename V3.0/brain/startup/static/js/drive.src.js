@@ -23,8 +23,36 @@ if (typeof RB === "undefined") {
       $(window).on("keyup", RB.drive.keyUp);
       $('.drive_btns').on("mousedown", RB.drive.mousedown);
       $('.drive_btns').on("mouseup", RB.drive.mouseup);
+      $('#autopilotswitch').on("change", RB.drive.autopilot);
     },
+
+    autopilot: function(e) {
+      var aplot = 0;
+      if (this.checked) {
+        // the checkbox is now checked
+        //console.log("autopilot checked!");
+        aplot=111;
+        
+      } else {
+        // the checkbox is now no longer checked
+        //console.log("autopilot not checked!");
+        aplot=222;
+      }
+      //console.log(aplot);
+      $.ajax({
+        contentType: 'application/json',
+        data: JSON.stringify({
+          autopilot: aplot
+        }),
+        dataType: 'json',
+        processData: false,
+        type: 'POST',
+        url: '/api/move'
+      });
+    },
+
     mousedown: function(e) {
+      //console.log("mouseDown");
       var t = RB.drive;
       //e.preventDefault();
       switch (this.id) {

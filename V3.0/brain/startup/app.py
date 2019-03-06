@@ -396,7 +396,8 @@ def ws_video(ws):
         camera.stop_preview()
         camera.close()
 
-
+#logging.basicConfig(filename='1234.log',level=logging.DEBUG)
+autopilot_sub = None
 @app.route("/api/move", methods=['POST', ])
 def move():
     """API call to recieve the new movement coordinates."""
@@ -405,9 +406,21 @@ def move():
     # see if the request is to self drive
     if "autopilot" in data:
         if data["autopilot"]:
-            print("Autopilot ON")
-            #status = data["autopilot"]
-            # bibli.autoBibli(status)
+            status = data["autopilot"]
+            #logging.debug('status is %d', status)
+            if status == 111:
+                global autopilot_sub
+                autopilot_sub = subprocess.Popen(['python','autopilot.py'],shell=False)
+                #logging.debug('autopilot start')
+            else:
+                global autopilot_sub
+                #if autopilot_sub is not None:
+                autopilot_sub.terminate()
+                #autopilot_sub.kill()
+                bibli.moveBibli(0)
+                autopilot_sub = None
+                bibli.moveBibli(0)
+                #logging.debug('autopilot stop')
     elif "demorun" in data:
         print("Running Demo")
         demo.demoActions(bibli)
