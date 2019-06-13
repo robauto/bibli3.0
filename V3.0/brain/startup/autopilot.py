@@ -1,30 +1,33 @@
 from gpiozero import DistanceSensor, Robot
 from time import sleep
 from signal import pause
+import random
 
 ultrasonic = DistanceSensor(echo=6, trigger=12, max_distance=1, threshold_distance=0.6)
 
 robot = Robot(left=(13, 16), right=(19, 20))
 
-ct=0
-def bd():
-    global ct
-    ct+=1
+
+def forward():
     robot.stop()
-    sleep(2)
-    if ct%4==0:
+    sleep(1)
+
+    if random.choice([True, False]):  # Randomly choose either left or right
         robot.left()
     else:
         robot.right()
-    sleep(0.200)
+    sleep(0.100)
+    robot.stop()
+    sleep(1)
+    robot.forward()
+
+
+def backward():
+    robot.stop()
+    sleep(0.1)
     robot.backward()
 
 
-def fd():
-    robot.stop()
-    sleep(2)
-    robot.forward()
-
-ultrasonic.when_in_range = bd
-ultrasonic.when_out_of_range = fd
+ultrasonic.when_in_range = backward
+ultrasonic.when_out_of_range = forward
 pause()
