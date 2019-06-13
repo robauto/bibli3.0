@@ -34,6 +34,9 @@ class BiBli:
         self.motor.motor_move(dc)
         # self.motor.joystick_to_duty(cords[0],cords[1])
 
+    def autoBibli(self, status):
+        self.motor.autopilot(status)
+
     def changeColor(self, rgb, led):
         self.lights.change_color(rgb[0], rgb[1], rgb[2], led)
 

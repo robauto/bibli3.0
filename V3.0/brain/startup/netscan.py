@@ -25,6 +25,7 @@ def main():
 	set_kv("ip", ip)
 	# if we've changed IP, delete the bibli cache and start fresh
 	if last_ip != ip:
+
 		brute_force_scan(r)
 		return
 	# we still have the same IP, refreh communication

@@ -3,6 +3,9 @@ import time
 import math
 import threading
 from db import get_kv, set_kv
+from threading import Timer
+from hcsr04sensor import sensor
+from repeatedTimer import RepeatedTimer
 
 
 def read_motors():
@@ -34,16 +37,31 @@ class motor_control:
     l_pin1 = 13
 
     #enable = 17
-
     # Group the pins for the right motor together
     r_motor = [r_pin1, r_pin2]
 
     # Group the pins for the left motor together
     l_motor = [l_pin1, l_pin2]
 
+    # servo motor
+    servo_pin = 26
+    TRIGGER_PIN = 12
+    ECHO_PIN = 6
+
+    # read distance
+    distance = 40
+    # read_dis = None
+    # selfdrive = None
+    # servo = None
+
     def __init__(self):
         # Disable warnings
         io.setwarnings(False)
+        self.read_dis = None
+        self.selfdrive = None
+        #self.read_dis = RepeatedTimer(0.8, self.get_dis)
+        #self.selfdrive = RepeatedTimer(1, self.selfmove)
+
         # Define all pins as outputs for each motor
         for pins in self.r_motor:
             io.setup(pins, io.OUT)
@@ -51,6 +69,17 @@ class motor_control:
         for pins in self.l_motor:
             io.setup(pins, io.OUT)
 
+        io.setup(self.servo_pin, io.OUT)
+        self.servo = io.PWM(self.servo_pin, 50)
+        self.servo.start(7)
+
+        # set GPIO direction (IN / OUT)
+        io.setup(self.TRIGGER_PIN, io.OUT)
+        io.setup(self.ECHO_PIN, io.IN)
+
+        self.timerflag = False
+        self.blocked = True
+        self.current_dir = 7
         #io.setup(self.enable, io.OUT)
 
         # To control the speed of the motors, need to
@@ -69,30 +98,123 @@ class motor_control:
         # Enable each motor to be able to move
         #io.output(self.enable, True)
 
+    # function to read the distance
+    def get_dis(self):
+        '''Calculate the distance of an object in centimeters using a HCSR04 sensor
+           and a Raspberry Pi'''
+
+        #trig_pin = 17
+        #echo_pin = 27
+        # Default values
+        # unit = 'metric'
+        # temperature = 20
+        # round_to = 1
+        #  Create a distance reading with the hcsr04 sensor module
+        value = sensor.Measurement(self.TRIGGER_PIN, self.ECHO_PIN)
+        raw_measurement = value.raw_distance()
+
+        # Calculate the distance in centimeters
+        metric_distance = value.distance_metric(raw_measurement)
+        self.distance = metric_distance
+
+    # function to  Autopilot
+    def selfmove(self):
+        if self.distance < 30:
+            self.blocked = True
+        else:
+            self.blocked = False
+
+        if self.blocked:
+            if self.explore('left'):
+                self.route('left')
+            elif self.explore('right'):
+                self.route('right')
+            else:
+                self.route('uturn')
+        else:
+            self.motor_move(1)
+
+    def explore(self, direction):
+        self.motor_move(0)
+        if direction is 'left':
+            self.current_dir = 4.5
+            self.servo.ChangeDutyCycle(self.current_dir)
+            time.sleep(2)
+            if self.distance < 30:
+                self.blocked = True
+                return False
+            else:
+                self.blocked = False
+                return True
+        elif direction is 'right':
+            self.current_dir = 9.5
+            self.servo.ChangeDutyCycle(self.current_dir)
+            time.sleep(2)
+            if self.distance < 30:
+                self.blocked = True
+                return False
+            else:
+                self.blocked = False
+                return True
+        return True
+
+    def route(self, direction):
+        self.motor_move(0)
+        if direction is 'left':
+            self.motor_move(4)
+            time.sleep(0.8)
+            self.motor_move(1)
+        elif direction is 'right':
+            self.motor_move(3)
+            time.sleep(0.8)
+            self.motor_move(1)
+        elif direction is 'uturn':
+            self.motor_move(3)
+            time.sleep(1.2)
+            self.motor_move(1)
+        if self.current_dir != 7:
+            self.current_dir = 7
+            self.servo.ChangeDutyCycle(self.current_dir)
+        time.sleep(0.5)
+
+    def autopilot(self, status):
+        # print(status)
+        if status == 1:
+            if self.timerflag is False:
+                self.read_dis = RepeatedTimer(0.8, self.get_dis)
+                self.selfdrive = RepeatedTimer(1, self.selfmove)
+                self.timerflag = True
+        if status == 0:
+            if self.timerflag:
+                self.read_dis.stop()
+                self.selfdrive.stop()
+                self.timerflag = False
+
     # Function to change the values of the motors
     #  Inputs - which motor to move and the value to set
+
     def motor_move(self, dc):
-        if dc == 1:
+        if dc == 1:  # froward
             io.output(self.r_motor[0], 1)
             io.output(self.r_motor[1], 0)
             io.output(self.l_motor[0], 1)
             io.output(self.l_motor[1], 0)
-        elif dc == 2:
+        elif dc == 2:  # backward
             io.output(self.r_motor[0], 0)
             io.output(self.r_motor[1], 1)
             io.output(self.l_motor[0], 0)
             io.output(self.l_motor[1], 1)
-        elif dc == 3:
+        elif dc == 3:  # right
             io.output(self.r_motor[0], 1)
             io.output(self.r_motor[1], 0)
             io.output(self.l_motor[0], 0)
             io.output(self.l_motor[1], 1)
-        elif dc == 4:
+        elif dc == 4:  # left
             io.output(self.r_motor[0], 0)
             io.output(self.r_motor[1], 1)
             io.output(self.l_motor[0], 1)
             io.output(self.l_motor[1], 0)
-        elif dc == 0:
+        elif dc == 0:  # stop
             io.output(self.r_motor[0], 0)
             io.output(self.r_motor[1], 0)
             io.output(self.l_motor[0], 0)
