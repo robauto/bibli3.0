@@ -104,7 +104,7 @@ except:
 
 app = Flask(__name__)
 app.config.update(
-    DEBUG=True,
+    DEBUG=False,
     JSON_AS_ASCII=False,
     JSONIFY_MIMETYPE="application/json; charset=utf-8"
 )
