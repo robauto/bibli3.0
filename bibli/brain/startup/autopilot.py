@@ -1,7 +1,7 @@
+from aws import update_shadow
 from gpiozero import DistanceSensor, Robot
 from time import sleep
 import random
-from .aws import update_shadow
 
 ultrasonic = DistanceSensor(echo=6, trigger=12, max_distance=1, threshold_distance=0.6)
 
@@ -18,13 +18,13 @@ def forward():
         robot.right()
     sleep(0.2)
     robot.stop()
-    sleep(1)
+    sleep(0.5)
     robot.forward()
 
 
 def backward():
     robot.stop()
-    sleep(0.1)
+    sleep(0.5)
     robot.backward()
 
 
@@ -32,4 +32,5 @@ ultrasonic.when_in_range = backward
 ultrasonic.when_out_of_range = forward
 
 while True:
-    update_shadow('{ultrasonic:' + ultrasonic.value + '}')
+    update_shadow('{"ultrasonic":' + str(ultrasonic.distance * 100) + '}')
+    sleep(0.2)

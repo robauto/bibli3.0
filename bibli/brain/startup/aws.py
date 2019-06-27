@@ -1,14 +1,14 @@
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 from json import loads
 
-CONFIG = loads(open("bibli/brain/startup/aws_credentials/config.json", "r").read())
+CONFIG = loads(open("./aws_credentials/config.json", "r").read())
 
 HOST_NAME = "amtw5tpjwpfq2-ats.iot.us-west-2.amazonaws.com"
-ROOT_CA = "credentials/Amazon_Root_CA_1.pem"
-PRIVATE_KEY = "credentials/private.pem.key"
-CERT_FILE = "credentials/certificate.pem.crt"
+ROOT_CA = "./aws_credentials/Amazon_Root_CA_1.pem"
+PRIVATE_KEY = "./aws_credentials/private.pem.key"
+CERT_FILE = "./aws_credentials/certificate.pem.crt"
 SHADOW_NAME = CONFIG["thing_name"]
-CLIENT_NAME = CONFIG["thing_name"] + "_shadow_client"
+CLIENT_NAME = CONFIG["thing_name"]
 
 shadow_client = AWSIoTMQTTShadowClient(CLIENT_NAME)
 shadow_client.configureEndpoint(HOST_NAME, 8883)
@@ -22,4 +22,15 @@ device_shadow = shadow_client.createShadowHandlerWithName(SHADOW_NAME, True)
 
 def update_shadow(json):
     """Updates the device's shadow on AWS with the specified data"""
-    device_shadow.shadowUpdate('{"state":{"reported":' + json + '}}')
+    device_shadow.shadowUpdate('{"state":{"reported":' + json + '}}', None, 5)
+
+
+if __name__ == '__main__':
+    from gpiozero import DistanceSensor
+    from time import sleep
+
+    sensor = DistanceSensor(echo=6, trigger=12)
+
+    while True:
+        update_shadow('{"ultrasonic":' + str(sensor.distance * 100) + '}')
+        sleep(0.2)
