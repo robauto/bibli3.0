@@ -1,5 +1,6 @@
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 from json import loads
+from config import ULTRASONIC_TRIGGER_PIN, ULTRASONIC_ECHO_PIN
 
 CONFIG = loads(open("./aws_credentials/config.json", "r").read())
 
@@ -29,7 +30,7 @@ if __name__ == '__main__':
     from gpiozero import DistanceSensor
     from time import sleep
 
-    sensor = DistanceSensor(echo=6, trigger=12)
+    sensor = DistanceSensor(echo=ULTRASONIC_ECHO_PIN, trigger=ULTRASONIC_TRIGGER_PIN)
 
     while True:
         update_shadow('{"ultrasonic":' + str(sensor.distance * 100) + '}')
