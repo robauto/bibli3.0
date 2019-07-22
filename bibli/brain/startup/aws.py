@@ -37,6 +37,16 @@ def delta_callback(payload, responseStatus, token):
         bibli.changeColor(desired_state["led1"], 1)
     if "led2" in keys:
         bibli.changeColor(desired_state["led2"], 2)
+    if "moveDirection" in keys:
+        direction = desired_state["moveDirection"]
+        dc = {
+            "stop": 0,
+            "forwards": 1,
+            "backwards": 2,
+            "right": 3,
+            "left": 4
+        }[direction]
+        bibli.moveBibli(dc)
 
     update_shadow('{"output":' + json.dumps(desired_state) + '}')
 
