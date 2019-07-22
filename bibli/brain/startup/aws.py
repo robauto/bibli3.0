@@ -1,8 +1,8 @@
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
-from json import loads
-from config import ULTRASONIC_TRIGGER_PIN, ULTRASONIC_ECHO_PIN
+import json
+import bibli_control
 
-CONFIG = loads(open("./aws_credentials/config.json", "r").read())
+CONFIG = json.loads(open("./aws_credentials/config.json", "r").read())
 
 HOST_NAME = "amtw5tpjwpfq2-ats.iot.us-west-2.amazonaws.com"
 ROOT_CA = "./aws_credentials/Amazon_Root_CA_1.pem"
@@ -20,18 +20,39 @@ shadow_client.connect()
 
 device_shadow = shadow_client.createShadowHandlerWithName(SHADOW_NAME, True)
 
+bibli = bibli_control.BiBli()
+
 
 def update_shadow(json):
     """Updates the device's shadow on AWS with the specified data"""
     device_shadow.shadowUpdate('{"state":{"reported":' + json + '}}', None, 5)
 
 
+def delta_callback(payload, responseStatus, token):
+    desired_state = json.loads(payload)["state"]["output"]
+    keys = desired_state.keys()
+    if "led0" in keys:
+        bibli.changeColor(desired_state["led0"], 0)
+    if "led1" in keys:
+        bibli.changeColor(desired_state["led1"], 1)
+    if "led2" in keys:
+        bibli.changeColor(desired_state["led2"], 2)
+
+    update_shadow('{"output":' + json.dumps(desired_state) + '}')
+
+
+def set_shadow_update_callback(callback):
+    device_shadow.shadowRegisterDeltaCallback(callback)
+
+
+set_shadow_update_callback(delta_callback)
+
 if __name__ == '__main__':
     from gpiozero import DistanceSensor
     from time import sleep
 
-    sensor = DistanceSensor(echo=ULTRASONIC_ECHO_PIN, trigger=ULTRASONIC_TRIGGER_PIN)
+    sensor = DistanceSensor(echo=6, trigger=12)
 
     while True:
-        update_shadow('{"ultrasonic":' + str(sensor.distance * 100) + '}')
+        update_shadow('{"sensor":{"ultrasonic":' + str(sensor.distance * 100) + '}}')
         sleep(0.2)
