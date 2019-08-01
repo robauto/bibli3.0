@@ -4,17 +4,34 @@ from config import CONFIG
 left_motor_pins = CONFIG["pins"]["motors"]["left"]
 right_motor_pins = CONFIG["pins"]["motors"]["right"]
 
-# Setup the motor pins as output
-for pin in left_motor_pins:
-    io.setup(pin, io.OUT)
+# Object to hold the GPIO's pulse width modulation objects
+pwms = {
+    "right": [],
+    "left": []
+}
 
-for pin in right_motor_pins:
-    io.setup(pin, io.OUT)
+# Setup the motor pins as output and begin pulse width modulation
+for pin in right_motor_pins():
+
+    io.setup(pin, io.OUT)  # Set the pin as output
+
+    pwm = io.PWM(pin, 50)  # Create a pulse width modulation object with a frequency of 50 hertz
+    pwm.start(0)  # Start the pwm as completely off
+
+    pwms["right"].append(pwm)
+
+for pin in left_motor_pins():
+    io.setup(pin, io.OUT)  # Set the pin as output
+
+    pwm = io.PWM(pin, 50)  # Create a pulse width modulation object with a frequency of 50 hertz
+    pwm.start(0)  # Start the pwm as completely off
+
+    pwms["left"].append(pwm)
 
 
 def set_motor_speeds(left_speed, right_speed):
     """
-    Sets the speed of the each motor
+    Sets the speed of the each motor with pwm
 
     :param left_speed: The desired speed of the left motor, from -1 to 1
     :param right_speed: The desired speed of the right motor, from -1 to 1
@@ -22,18 +39,18 @@ def set_motor_speeds(left_speed, right_speed):
     """
 
     if left_speed >= 0:
-        io.output(left_motor_pins[0], left_speed)
-        io.output(left_motor_pins[1], 0)
+        pwms["left"][0].ChangeDutyCycle(left_speed)
+        pwms["left"][0].ChangeDutyCycle(0)
     else:
-        io.output(left_motor_pins[0], 0)
-        io.output(left_motor_pins[1], -left_speed)
+        pwms["left"][0].ChangeDutyCycle(0)
+        pwms["left"][0].ChangeDutyCycle(-left_speed)
 
     if right_speed >= 0:
-        io.output(right_motor_pins[0], right_speed)
-        io.output(right_motor_pins[1], 0)
+        pwms["right"][0].ChangeDutyCycle(right_speed)
+        pwms["right"][0].ChangeDutyCycle(0)
     else:
-        io.output(right_motor_pins[0], 0)
-        io.output(right_motor_pins[1], -right_speed)
+        pwms["right"][0].ChangeDutyCycle(0)
+        pwms["right"][0].ChangeDutyCycle(-right_speed)
 
 
 def stop_motors():
