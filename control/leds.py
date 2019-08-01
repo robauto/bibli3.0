@@ -1,4 +1,4 @@
-import Rpi.GPIO as io
+import RPi.GPIO as io
 from config import CONFIG
 
 led_pins = CONFIG.pins.leds
