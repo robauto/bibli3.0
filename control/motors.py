@@ -1,8 +1,8 @@
 import RPi.GPIO as io
-from . import CONFIG
+from ..config import CONFIG
 
-left_motor_pins = CONFIG.pins.motors.left
-right_motor_pins = CONFIG.pins.motors.right
+left_motor_pins = CONFIG["pins"]["motors"]["left"]
+right_motor_pins = CONFIG.["pins"]["motors"]["right"]
 
 # Setup the motor pins as output
 for pin in left_motor_pins:

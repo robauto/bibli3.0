@@ -2,8 +2,8 @@ import RPi.GPIO as io
 import hcsr04sensor
 from config import CONFIG
 
-trigger_pin = CONFIG.pins.sensors.ultrasonic.trigger
-echo_pin = CONFIG.pins.sensors.ultrasonic.echo
+trigger_pin = CONFIG["pins"]["sensors"]["ultrasonic"]["trigger"]
+echo_pin = CONFIG["pins"]["sensors"]["ultrasonic"]["echo"]
 
 io.setup(trigger_pin, io.OUT)
 io.setup(echo_pin, io.IN)

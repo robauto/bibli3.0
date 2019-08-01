@@ -1,7 +1,7 @@
 import RPi.GPIO as io
 from config import CONFIG
 
-led_pins = CONFIG.pins.leds
+led_pins = CONFIG["pins"]["leds"]
 
 pwms = []  # List to hold the GPIO's pulse width modulation objects
 

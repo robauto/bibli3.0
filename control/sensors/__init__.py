@@ -1,6 +1,6 @@
 from config import CONFIG
 
-available_sensors = CONFIG.sensors
+available_sensors = CONFIG["sensors"]
 
 if "ultrasonic" in available_sensors:
     import ultrasonic_sensor
