@@ -19,6 +19,8 @@ for led in led_pins:
         pwm = io.PWM(pin, 50)  # Create a pulse width modulation object with a frequency of 50 hertz
         pwm.start(100)  # Start the pwm as on 100% of the time
 
+        pwms[len(pwms) - 1][pin_name] = pwm
+
 
 def rgb_to_pwm(r, g, b):
     """

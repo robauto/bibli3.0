@@ -3,7 +3,7 @@ from config import CONFIG
 available_sensors = CONFIG["sensors"]
 
 if "ultrasonic" in available_sensors:
-    import ultrasonic_sensor
+    from . import ultrasonic_sensor
 
 
 def get_all_sensor_readings():
