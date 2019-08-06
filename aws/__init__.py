@@ -4,7 +4,7 @@ from ..control import motors, leds
 
 CONFIG = json.loads(open("./aws_credentials/aws_config.json", "r").read())
 
-HOST_NAME = CONFIG["account_endpoint"] + ".iot.us-west-2.amazonaws.com"
+HOST_NAME = CONFIG["account_endpoint"] + "-ats.iot.us-west-2.amazonaws.com"
 ROOT_CA = "./aws_credentials/Amazon_Root_CA_1.pem"
 PRIVATE_KEY = "./aws_credentials/private.pem.key"
 CERT_FILE = "./aws_credentials/certificate.pem.crt"
