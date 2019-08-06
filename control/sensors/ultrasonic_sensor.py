@@ -12,7 +12,7 @@ io.setup(echo_pin, io.IN)
 def get_distance():
     """Return the distance from the ultrasonic sensor to the nearest object"""
 
-    value = sensor.Measurement(trigger_pin, echo_pin)
-    raw_measurement = value.raw_distance()
+    measurement = sensor.Measurement(trigger_pin, echo_pin, gpio_mode=io.BOARD)
+    raw_measurement = measurement.raw_distance()
 
     return raw_measurement

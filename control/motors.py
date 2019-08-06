@@ -40,17 +40,17 @@ def set_motor_speeds(left_speed, right_speed):
 
     if left_speed >= 0:
         pwms["left"][0].ChangeDutyCycle(left_speed)
-        pwms["left"][0].ChangeDutyCycle(0)
+        pwms["left"][1].ChangeDutyCycle(0)
     else:
         pwms["left"][0].ChangeDutyCycle(0)
-        pwms["left"][0].ChangeDutyCycle(-left_speed)
+        pwms["left"][1].ChangeDutyCycle(-left_speed)
 
     if right_speed >= 0:
         pwms["right"][0].ChangeDutyCycle(right_speed)
-        pwms["right"][0].ChangeDutyCycle(0)
+        pwms["right"][1].ChangeDutyCycle(0)
     else:
         pwms["right"][0].ChangeDutyCycle(0)
-        pwms["right"][0].ChangeDutyCycle(-right_speed)
+        pwms["right"][1].ChangeDutyCycle(-right_speed)
 
 
 def stop_motors():
