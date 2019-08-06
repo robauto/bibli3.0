@@ -4,12 +4,12 @@ from ..control import motors, leds
 
 CONFIG = json.loads(open("./aws_credentials/aws_config.json", "r").read())
 
-HOST_NAME = "amtw5tpjwpfq2-ats.iot.us-west-2.amazonaws.com"
+HOST_NAME = CONFIG["account_endpoint"] + ".iot.us-west-2.amazonaws.com"
 ROOT_CA = "./aws_credentials/Amazon_Root_CA_1.pem"
 PRIVATE_KEY = "./aws_credentials/private.pem.key"
 CERT_FILE = "./aws_credentials/certificate.pem.crt"
 SHADOW_NAME = CONFIG["thing_name"]
-CLIENT_NAME = CONFIG["thing_name"]
+CLIENT_NAME = SHADOW_NAME
 
 shadow_client = AWSIoTMQTTShadowClient(CLIENT_NAME)
 shadow_client.configureEndpoint(HOST_NAME, 8883)
@@ -21,16 +21,16 @@ shadow_client.connect()
 device_shadow = shadow_client.createShadowHandlerWithName(SHADOW_NAME, True)
 
 
-def update_shadow(json):
+def update_shadow(json_data):
     """Update the device's shadow on AWS with the specified data"""
-    device_shadow.shadowUpdate('{"state":{"reported":' + json + '}}', None, 5)
+    device_shadow.shadowUpdate('{"state":{"reported":' + json_data + '}}', None, 5)
 
 
 def update_bibli_callback(payload, responseStatus, token):
     """
     Set the motors and leds based on a MQTT message from AWS and update the shadow to reflect the change
 
-    :param payload: The payload object given callbacks by AWS
+    :param payload: The payload object given to callbacks by AWS
     :return: None
     """
 

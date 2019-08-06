@@ -1,0 +1,4 @@
+{
+  "thing_name": "<Name of thing on AWS>",
+  "account_endpoint": "<AWS account's Rest API endpoint>"
+}
