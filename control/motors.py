@@ -11,7 +11,7 @@ pwms = {
 }
 
 # Setup the motor pins as output and begin pulse width modulation
-for pin in right_motor_pins():
+for pin in right_motor_pins:
 
     io.setup(pin, io.OUT)  # Set the pin as output
 
@@ -20,7 +20,7 @@ for pin in right_motor_pins():
 
     pwms["right"].append(pwm)
 
-for pin in left_motor_pins():
+for pin in left_motor_pins:
     io.setup(pin, io.OUT)  # Set the pin as output
 
     pwm = io.PWM(pin, 50)  # Create a pulse width modulation object with a frequency of 50 hertz

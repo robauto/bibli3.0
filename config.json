@@ -1,7 +1,7 @@
 {
   "pins": {
     "motors" : {
-      "left" : [28, 23],
+      "left" : [38, 36],
       "right": [32, 33]
     },
     "leds": [
