@@ -37,6 +37,7 @@ def set_motor_speeds(left_speed, right_speed):
     :param right_speed: The desired speed of the right motor, from -1 to 1
     :return: None
     """
+    print(left_speed, right_speed)
 
     if left_speed >= 0:
         pwms["left"][0].ChangeDutyCycle(left_speed)

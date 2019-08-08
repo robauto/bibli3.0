@@ -1,4 +1,4 @@
 {
-  "thing_name": "<Name of thing on AWS>",
-  "account_endpoint": "<First 14 characters of the AWS account's Rest API endpoint>"
+  "thing_name": "Bibli2",
+  "account_endpoint": "a2sg04dv4mdd8l"
 }
