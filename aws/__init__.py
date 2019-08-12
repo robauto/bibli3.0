@@ -43,10 +43,10 @@ def update_bibli_callback(payload, responseStatus, token):
     if "led2" in keys:
         leds.set_led_color(2, desired_state["led2"])
     if "motors" in keys:
-        motors.set_motor_speeds(
-            desired_state["motors"]["left"],
-            desired_state["motors"]["right"]
-        )
+        if "right" in desired_state["motors"].keys():
+            motors.set_right_motor_speed(desired_state["motors"]["right"])
+        if "left" in desired_state["motors"].keys():
+            motors.set_right_motor_speed(desired_state["motors"]["left"])
 
     update_shadow('{"output":' + json.dumps(desired_state) + '}')
 

@@ -29,28 +29,49 @@ for pin in left_motor_pins:
     pwms["left"].append(pwm)
 
 
-def set_motor_speeds(left_speed, right_speed):
+def set_left_motor_speed(speed):
     """
-    Sets the speed of the each motor with pwm
+    Sets the speed of the left motor with pwm
 
-    :param left_speed: The desired speed of the left motor, from -1 to 1
-    :param right_speed: The desired speed of the right motor, from -1 to 1
+    :param speed: The desired speed of the left motor, from -100 to 100
     :return: None
     """
 
-    if left_speed >= 0:
-        pwms["left"][0].ChangeDutyCycle(left_speed)
+    if speed >= 0:
+        pwms["left"][0].ChangeDutyCycle(speed)
         pwms["left"][1].ChangeDutyCycle(0)
     else:
         pwms["left"][0].ChangeDutyCycle(0)
-        pwms["left"][1].ChangeDutyCycle(-left_speed)
+        pwms["left"][1].ChangeDutyCycle(-speed)
 
-    if right_speed >= 0:
-        pwms["right"][0].ChangeDutyCycle(right_speed)
+
+def set_right_motor_speed(speed):
+    """
+    Sets the speed of the right motor with pwm
+
+    :param speed: The desired speed of the right motor, from -100 to 100
+    :return: None
+    """
+
+    if speed >= 0:
+        pwms["right"][0].ChangeDutyCycle(speed)
         pwms["right"][1].ChangeDutyCycle(0)
     else:
         pwms["right"][0].ChangeDutyCycle(0)
-        pwms["right"][1].ChangeDutyCycle(-right_speed)
+        pwms["right"][1].ChangeDutyCycle(-speed)
+
+
+def set_motor_speeds(left_speed, right_speed):
+    """
+    Sets the speed of the motor with pwm
+
+    :param left_speed: The desired speed of the left motor, from -100 to 100
+    :param right_speed: The desired speed of the right motor, from -100 to 100
+    :return: None
+    """
+
+    set_left_motor_speed(left_speed)
+    set_right_motor_speed(right_speed)
 
 
 def stop_motors():
