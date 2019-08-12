@@ -1,13 +1,16 @@
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 import json
-from ..control import motors, leds
+import os
+from control import motors, leds
 
-CONFIG = json.loads(open("./aws_credentials/aws_config.json", "r").read())
+basedir = os.path.dirname(__file__)
+
+CONFIG = json.loads(open("aws/aws_credentials/aws_config.json", "r").read())
 
 HOST_NAME = CONFIG["account_endpoint"] + "-ats.iot.us-west-2.amazonaws.com"
-ROOT_CA = "./aws_credentials/Amazon_Root_CA_1.pem"
-PRIVATE_KEY = "./aws_credentials/private.pem.key"
-CERT_FILE = "./aws_credentials/certificate.pem.crt"
+ROOT_CA = basedir + "/aws_credentials/AmazonRootCA1.pem"
+PRIVATE_KEY = basedir + "/aws_credentials/private.pem.key"
+CERT_FILE = basedir + "/aws_credentials/certificate.pem.crt"
 SHADOW_NAME = CONFIG["thing_name"]
 CLIENT_NAME = SHADOW_NAME
 
@@ -23,6 +26,7 @@ device_shadow = shadow_client.createShadowHandlerWithName(SHADOW_NAME, True)
 
 def update_shadow(json_data):
     """Update the device's shadow on AWS with the specified data"""
+    print(json_data)
     device_shadow.shadowUpdate('{"state":{"reported":' + json_data + '}}', None, 5)
 
 
