@@ -1,24 +1,24 @@
-#Bibli3.0
+# Bibli3.0
 
 This is the codebase for the Bibli robots manufactured by Robauto Inc.
 
-#Installation
+# Installation
 To install the Bibli software on a new Raspberry pi, follow these instructions.
 
-###You Will Need:
+### You Will Need:
 1. A Raspberry Pi
 2. The Bibli Robot
 3. A microSD card with at least 8GB of storage. 
 4. A computer that can read the microSD (most computers will need an adapter)
 
-###Flashing the microSD
+### Flashing the microSD
 To begin, download this image from google drive.
 Then you will need to flash the image onto your SD card.
 There are several tools for this. I recommend [Etcher](https://www.balena.io/etcher/) for its simplicity.
 It might take a few minutes to flash the microSD.
 Once it finishes, eject the SD card, insert it into the Raspberry Pi, and power on the Pi.
 
-###Connecting to the Bibli
+### Connecting to the Bibli
 Give the Pi a minute to power on. The Pi will automatically connect to the Bibli wifi if available.
 To find the pi's IP address, you will need to scan the network.
 On can be achieved with the ```nmap``` command.
@@ -28,7 +28,7 @@ Luckily, both Linux and Windows have one built in. Run ```ssh pi@<IP Address>```
 replacing ```<IP Address>``` with the IP of the Pi. You will be prompted for the password,
 which is 'raspberry' by default.
 
-###Setup
+### Setup
 There are a few things you should do when you first connect to the pi.
 Run  
  ```sudo raspi-config --expand-rootfs```  
@@ -38,7 +38,7 @@ Run
  To update to the latest version of the code, run  ```git pull```.
  You will need to enter your github credentials.
  
-###AWS Setup
+### AWS Setup
 You will need access to Robuato's AWS account for this step.
 1. Go to the [things page](https://us-west-2.console.aws.amazon.com/iot/home?region=us-west-2#/thinghub)
 and click 'Create'.
@@ -68,5 +68,5 @@ The file should look like this:
 Replace `````<Thing Name>````` with the name you gave the AWS thing.  
 Replace ```<The unique endpoint for your AWS account>``` with your AWS account endpoint. Right now, this is ```a2sg04dv4mdd8l```.
 
-###You're Done!
+### You're Done!
 You can run ```python3 /opt/Robauto/bibli3.0/bibli.py``` to start the code. You should be able  to access the robot over AWS.
