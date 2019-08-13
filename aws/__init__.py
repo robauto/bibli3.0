@@ -5,7 +5,7 @@ from control import motors, leds
 
 basedir = os.path.dirname(__file__)
 
-CONFIG = json.loads(open("aws/aws_credentials/aws_config.json", "r").read())
+CONFIG = json.loads(open(basedir + "/aws_credentials/aws_config.json", "r").read())
 
 HOST_NAME = CONFIG["account_endpoint"] + "-ats.iot.us-west-2.amazonaws.com"
 ROOT_CA = basedir + "/aws_credentials/AmazonRootCA1.pem"
@@ -50,7 +50,7 @@ def update_bibli_callback(payload, responseStatus, token):
         if "right" in desired_state["motors"].keys():
             motors.set_right_motor_speed(desired_state["motors"]["right"])
         if "left" in desired_state["motors"].keys():
-            motors.set_right_motor_speed(desired_state["motors"]["left"])
+            motors.set_left_motor_speed(desired_state["motors"]["left"])
 
     update_shadow('{"output":' + json.dumps(desired_state) + '}')
 
