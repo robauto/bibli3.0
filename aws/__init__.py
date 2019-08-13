@@ -50,7 +50,7 @@ def update_bibli_callback(payload, responseStatus, token):
         if "right" in desired_state["motors"].keys():
             motors.set_right_motor_speed(desired_state["motors"]["right"])
         if "left" in desired_state["motors"].keys():
-            motors.set_right_motor_speed(desired_state["motors"]["left"])
+            motors.set_left_motor_speed(desired_state["motors"]["left"])
 
     update_shadow('{"output":' + json.dumps(desired_state) + '}')
 
