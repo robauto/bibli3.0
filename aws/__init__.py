@@ -23,7 +23,6 @@ shadow_client.connect()
 
 device_shadow = shadow_client.createShadowHandlerWithName(SHADOW_NAME, True)
 
-
 def update_shadow(json_data):
     """Update the device's shadow on AWS with the specified data"""
     print(json_data)
