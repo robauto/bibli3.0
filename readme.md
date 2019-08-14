@@ -1,6 +1,6 @@
 # Bibli4.0
 
-This is the codebase for the Bibli robots manufactured by [Robauto Inc](robauto.co).
+This is the codebase for the Bibli robots manufactured by [Robauto Inc](https://robauto.co).
 
 # Installation
 To install the Bibli software on a new Raspberry pi, follow these instructions.
@@ -69,4 +69,4 @@ Replace `````<Thing Name>````` with the name you gave the AWS thing.
 Replace ```<The unique endpoint for your AWS account>``` with your AWS account endpoint. Right now, this is ```a2sg04dv4mdd8l```.
 
 ### You're Done!
-You can run ```python3 /opt/Robauto/bibli3.0/bibli.py``` to start the code. You should be able  to access the robot over AWS.
+You can run ```python3 /opt/Robauto/bibli3.0/bibli.py``` or simply restart your robot to start the code. You should be able  to access the robot over AWS.
