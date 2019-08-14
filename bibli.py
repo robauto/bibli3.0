@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from time import sleep
 import json
 import aws
