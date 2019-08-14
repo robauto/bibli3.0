@@ -12,10 +12,10 @@ To install the Bibli software on a new Raspberry pi, follow these instructions.
 4. A computer that can read the microSD (most computers will need an adapter)
 
 ### Flashing the microSD
-To begin, download this image from google drive.
+To begin, download this image from google drive. Unzip it. This might take a minute.
 Then you will need to flash the image onto your SD card.
 There are several tools for this. I recommend [Etcher](https://www.balena.io/etcher/) for its simplicity.
-It might take a few minutes to flash the microSD.
+It will take a few minutes to flash the microSD.
 Once it finishes, eject the SD card, insert it into the Raspberry Pi, and power on the Pi.
 
 ### Connecting to the Bibli
@@ -69,4 +69,4 @@ Replace `````<Thing Name>````` with the name you gave the AWS thing.
 Replace ```<The unique endpoint for your AWS account>``` with your AWS account endpoint. Right now, this is ```a2sg04dv4mdd8l```.
 
 ### You're Done!
-You can run ```python3 /opt/Robauto/bibli3.0/bibli.py``` or simply restart your robot to start the code. You should be able  to access the robot over AWS.
+You can run ```python3 /opt/Robauto/bibli3.0/bibli.py``` or simply restart your robot to start the code. You should be able to access the robot over AWS.
