@@ -1,6 +1,6 @@
-# Bibli3.0
+# Bibli4.0
 
-This is the codebase for the Bibli robots manufactured by Robauto Inc.
+This is the codebase for the Bibli robots manufactured by [Robauto Inc](robauto.co).
 
 # Installation
 To install the Bibli software on a new Raspberry pi, follow these instructions.
@@ -21,7 +21,7 @@ Once it finishes, eject the SD card, insert it into the Raspberry Pi, and power 
 ### Connecting to the Bibli
 Give the Pi a minute to power on. The Pi will automatically connect to the Bibli wifi if available.
 To find the pi's IP address, you will need to scan the network.
-On can be achieved with the ```nmap``` command.
+On Linux, this can be achieved with the ```nmap``` command.
 On Windows, you may have to download a program to do this.
 Once you have the IP address, you can connect to it with an ssh client.
 Luckily, both Linux and Windows have one built in. Run ```ssh pi@<IP Address>```,
@@ -53,7 +53,7 @@ and click 'Create'.
 
 The thing is now ready!
 
-Use Filezilla or another FTP client to transefer the three files you downloaded onto the Bibli in the folder ```/opt/Robauto/bibli3.0/aws/aws_credentials```.
+Use Filezilla or another FTP client to transfer the three files you downloaded onto the Bibli in the folder ```/opt/Robauto/bibli3.0/aws/aws_credentials```.
 The private key file MUST be named 'private.pem.key' and the certificate file MUST be named 'certificate.pem.crt'
 
 You will also need to edit aws_config.json in the same folder. You can do this with
