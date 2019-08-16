@@ -12,7 +12,7 @@ To install the Bibli software on a new Raspberry pi, follow these instructions.
 4. A computer that can read the microSD (most computers will need an adapter)
 
 ### Flashing the microSD
-To begin, download this image from google drive. Unzip it. This might take a minute.
+To begin, download [this image](https://drive.google.com/open?id=1OpWgA1k8Cn0-RlcP78CaVWSLNqlpdKn8) from google drive. Unzip it. This might take a minute.
 Then you will need to flash the image onto your SD card.
 There are several tools for this. I recommend [Etcher](https://www.balena.io/etcher/) for its simplicity.
 It will take a few minutes to flash the microSD.
