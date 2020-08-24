@@ -1,7 +1,9 @@
-BiBli Operating System
+BiBli Robotics Operating System for Raspberry Pi
 ------------------------------------------
 ==============================
 Version 3.0 (C) Robauto, Inc. 
+
+NOT FOR COMMERCIAL USE. FOR COMMERCIAL INQUIRIES EMAIL SUPPORT@ROBAUTO.AI. 
 
 To run a new instance flash an image to your SD disk
 Compatible with Raspberry Pi 2.0 - 3.0
@@ -76,11 +78,11 @@ RPIO - sudo pip install rpio
 #Contributors
 --------
 
+Jalali Hartman
+
 Wei Miao
 
 Qi Liu
-
-Jalali Hartman
 
 Christian Kaan
 
@@ -114,10 +116,11 @@ James Gardner
 #Contact
 ------------------
 
-#(C) ROBAUTO, INC. 2016-2018
-P.O. Box 4688
-Boulder, Co 80306
-www.ROBAUTO.co
-support@robauto.co
+#(C) ROBAUTO, INC. 2016-2020
+Free For Non Commercial Use
+251 Main Street
+Longmont, CO 80501
+www.robauto.ai
+support@robauto.ai
 
 
