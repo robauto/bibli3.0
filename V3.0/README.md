@@ -3,8 +3,6 @@ BiBli Robotics Operating System for Raspberry Pi
 ==============================
 Version 3.0 (C) Robauto, Inc. 
 
-NOT FOR COMMERCIAL USE. FOR COMMERCIAL INQUIRIES EMAIL SUPPORT@ROBAUTO.AI. 
-
 To run a new instance flash an image to your SD disk
 Compatible with Raspberry Pi 2.0 - 3.0
 
