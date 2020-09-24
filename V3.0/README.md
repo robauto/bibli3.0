@@ -117,7 +117,6 @@ James Gardner
 ------------------
 
 #(C) ROBAUTO, INC. 2016-2020
-Free For Non Commercial Use
 251 Main Street
 Longmont, CO 80501
 www.robauto.ai
