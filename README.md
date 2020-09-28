@@ -29,7 +29,7 @@ https://drive.google.com/file/d/1krSru0f-JyPPPCto6M7XDUL-3al_ClVJ/view?usp=shari
 
 #Primary Directories:
 --------------------------
-
+```bash
 /apps
 /brain
   /startup/ # (Web Server)
@@ -42,6 +42,7 @@ https://drive.google.com/file/d/1krSru0f-JyPPPCto6M7XDUL-3al_ClVJ/view?usp=shari
   /video
 /navigation
   /navigation/motor #Arduino code, sensors and motors
+```
   
 #Core Configuration Areas
 --------------------------
