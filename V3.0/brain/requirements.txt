@@ -1,4 +1,11 @@
 Flask
-pyserial
+demos
 eyed3
+gevent
+gevent-websocket
 mutagen
+netifaces
+pillow
+pygame
+pyserial
+redis
