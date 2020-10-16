@@ -4,3 +4,10 @@
 /media/
 /navigation/
 .DS_Store
+
+# Python
+__pycache__
+.cache
+*.pyc
+
+
